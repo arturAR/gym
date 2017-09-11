@@ -16,3 +16,4 @@ addons:
     branches:
       - master
       - development
+      - security-config
