@@ -9,3 +9,10 @@ services:
 #    - mysql
 script:
 - mvn clean install
+- sonar-scanner
+addons:
+  sonarcloud:
+    organization: "mprtcz-github"
+    branches:
+      - master
+      - development
