@@ -15,5 +15,5 @@ addons:
     organization: "mprtcz-github"
     branches:
       - master
-      - development
+      - devs
       - security-config
