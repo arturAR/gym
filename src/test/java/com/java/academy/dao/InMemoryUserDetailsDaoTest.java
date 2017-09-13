@@ -17,13 +17,13 @@ public class InMemoryUserDetailsDaoTest {
     public void testGetDetailsByName() {
         InMemoryUserDetailsDao inMemoryUserDetailsDao = new InMemoryUserDetailsDao();
         String name = "user";
-        String password = "pass";
+        String userPw = "pass";
         assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).isAccountNonExpired(), true);
         assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).isAccountNonLocked(), true);
         assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).isCredentialsNonExpired(), true);
         assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).isEnabled(), true);
         assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).getUsername(), name);
-        assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).getPassword(), new Md5PasswordEncoder().encodePassword(password, ""));
+        assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).getPassword(), new Md5PasswordEncoder().encodePassword(userPw, ""));
         assertEquals(inMemoryUserDetailsDao.getDetailsByName(name).getAuthorities().size(), 1);
     }
 
