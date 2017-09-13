@@ -90,8 +90,8 @@ public class InMemoryUserDetailsDao implements UserDetailsDao {
             public GrantedAuthority getRole() {
                 return (GrantedAuthority) () -> "ROLE_ADMIN";
             }
-        },;
+        };
 
-        abstract public GrantedAuthority getRole();
+        public abstract GrantedAuthority getRole();
     }
 }
