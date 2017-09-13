@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class InMemoryUserDetailsDao implements UserDetailsDao {
@@ -21,8 +22,9 @@ public class InMemoryUserDetailsDao implements UserDetailsDao {
 
     @Override
     public UserDetails getDetailsByName(String name) {
-        System.out.println("Checking for " +name);
-        return userDetails.stream().filter(defaultUserDetails -> defaultUserDetails.getUsername().equals(name)).findFirst().get();
+        System.out.printf("Checking for " +name);
+        Optional<DefaultUserDetails> optional =  userDetails.stream().filter(defaultUserDetails -> defaultUserDetails.getUsername().equals(name)).findFirst();
+        return optional.orElse(null);
     }
 
     class DefaultUserDetails implements UserDetails {
@@ -74,15 +76,6 @@ public class InMemoryUserDetailsDao implements UserDetailsDao {
         @Override
         public boolean isEnabled() {
             return true;
-        }
-
-        @Override
-        public String toString() {
-            return "DefaultUserDetails{" +
-                    "password='" + password + '\'' +
-                    ", username='" + username + '\'' +
-                    ", authorities=" + authorities +
-                    '}';
         }
     }
 

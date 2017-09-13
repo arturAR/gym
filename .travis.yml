@@ -16,4 +16,4 @@ addons:
     branches:
       - master
       - devs
-      - security-config
+      - security-configuration
