@@ -22,8 +22,7 @@ public class InMemoryUserDetailsDao implements UserDetailsDao {
 
     @Override
     public UserDetails getDetailsByName(String name) {
-        System.out.printf("Checking for " +name);
-        Optional<DefaultUserDetails> optional =  userDetails.stream().filter(defaultUserDetails -> defaultUserDetails.getUsername().equals(name)).findFirst();
+        Optional<DefaultUserDetails> optional = userDetails.stream().filter(defaultUserDetails -> defaultUserDetails.getUsername().equals(name)).findFirst();
         return optional.orElse(null);
     }
 
@@ -38,7 +37,7 @@ public class InMemoryUserDetailsDao implements UserDetailsDao {
             this.username = username;
             this.authorities = new ArrayList<>();
             authorities.add(Authority.USER.getRole());
-            if(isAdmin) {
+            if (isAdmin) {
                 authorities.add(Authority.ADMIN.getRole());
             }
         }
@@ -80,17 +79,19 @@ public class InMemoryUserDetailsDao implements UserDetailsDao {
     }
 
     enum Authority {
-        USER (() -> "ROLE_USER"),
-        ADMIN (() -> "ROLE_ADMIN");
+        USER {
+            @Override
+            public GrantedAuthority getRole() {
+                return (GrantedAuthority) () -> "ROLE_USER";
+            }
+        },
+        ADMIN {
+            @Override
+            public GrantedAuthority getRole() {
+                return (GrantedAuthority) () -> "ROLE_ADMIN";
+            }
+        },;
 
-        GrantedAuthority role;
-
-        Authority(GrantedAuthority role) {
-            this.role = role;
-        }
-
-        public GrantedAuthority getRole() {
-            return role;
-        }
+        abstract public GrantedAuthority getRole();
     }
 }
