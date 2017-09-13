@@ -12,7 +12,7 @@ import java.util.Optional;
 
 @Component
 public class InMemoryUserDetailsDao implements UserDetailsDao {
-    private List<DefaultUserDetails> userDetails;
+    List<DefaultUserDetails> userDetails;
 
     public InMemoryUserDetailsDao() {
         userDetails = new ArrayList<>();
