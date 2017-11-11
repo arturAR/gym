@@ -8,7 +8,8 @@ before_script:
 services:
 #    - mysql
 script:
-- mvn clean install
+- gradle clean build
+- ls -a
 - sonar-scanner
 addons:
   sonarcloud:
@@ -17,3 +18,4 @@ addons:
       - master
       - devs
       - security-config
+      - spring-boot-config
