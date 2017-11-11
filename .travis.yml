@@ -8,7 +8,7 @@ before_script:
 services:
 #    - mysql
 script:
-- mvn clean install
+- gradle clean build
 - sonar-scanner
 addons:
   sonarcloud:
