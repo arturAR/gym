@@ -9,6 +9,7 @@ services:
 #    - mysql
 script:
 - gradle clean build
+- ls -a
 - sonar-scanner
 addons:
   sonarcloud:
