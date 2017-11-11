@@ -17,3 +17,4 @@ addons:
       - master
       - devs
       - security-config
+      - spring-boot-config
