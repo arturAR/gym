@@ -11,6 +11,7 @@ public class GymApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		// this method will test context loading
 	}
 
 }
