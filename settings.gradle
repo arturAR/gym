@@ -1,0 +1,4 @@
+rootProject.name = 'gym'
+include 'client-web'
+include 'frontend'
+include 'backend'

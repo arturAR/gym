@@ -1,0 +1,65 @@
+defaultTasks 'clean', 'build'
+
+subprojects {
+    ext {
+        versions = [
+                junit              : '4.12',
+                jstl               : '1.2',
+                spring_boot        : '1.5.8.RELEASE',
+                hibernate_validator: '5.3.3.Final',
+                hibernate_ehcache  : '5.0.11.Final',
+                mysql              : '5.1.43',
+                hsqldb             : '2.3.4',
+        ]
+
+        libs = [:]
+
+        libs.javax = ["javax.servlet:jstl:${versions.jstl}"]
+
+        libs.spring_boot_web = ["org.springframework.boot:spring-boot-starter-web:${versions.spring_boot}"]
+
+        libs.spring_boot_jpa = ["org.springframework.boot:spring-boot-starter-data-jpa:${versions.spring_boot}",
+                                "org.hibernate:hibernate-validator:${versions.hibernate_validator}",
+                                "org.hibernate:hibernate-ehcache:${versions.hibernate_ehcache}"]
+
+        libs.spring_boot_security = "org.springframework.boot:spring-boot-starter-security:${versions.spring_boot}"
+
+        libs.spring_boot_mail = "org.springframework.boot:spring-boot-starter-mail:${versions.spring_boot}"
+
+        libs.spring_boot_batch = ["org.springframework.boot:spring-boot-starter-batch:${versions.spring_boot}"]
+
+        libs.database_mysql = "mysql:mysql-connector-java:${versions.mysql}"
+
+        libs.database_hsqldb = "org.hsqldb:hsqldb:${versions.hsqldb}"
+
+        libs.test = ["junit:junit:${versions.junit}",
+                     "org.springframework.boot:spring-boot-starter-test:${versions.spring_boot}"]
+
+        libs.tomcat_embed = ["org.springframework.boot:spring-boot-starter-tomcat:${versions.spring_boot}",
+                             "org.apache.tomcat.embed:tomcat-embed-jasper"]
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+
+    sourceCompatibility = targetCompatibility = 1.8
+
+    compileJava {
+        options.encoding = "UTF-8"
+    }
+    compileTestJava {
+        options.encoding = "UTF-8"
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "http://repo.spring.io/release" }
+    }
+
+    task wrapper(type: Wrapper) {
+        gradleVersion = '4.2.1'
+    }
+
+    version = '0.0.1-SNAPSHOT'
+}
