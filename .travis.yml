@@ -13,6 +13,7 @@ script:
 - sonar-scanner
 addons:
   sonarcloud:
-    organization: "ja-github"
+    organization: "mprtcz-github"
     branches:
       - master
+      - sonar-check
