@@ -16,3 +16,4 @@ addons:
     organization: "ja-github"
     branches:
       - master
+      - sonar-check
