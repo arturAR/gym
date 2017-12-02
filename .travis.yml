@@ -13,9 +13,6 @@ script:
 - sonar-scanner
 addons:
   sonarcloud:
-    organization: "mprtcz-github"
+    organization: "ja-github"
     branches:
       - master
-      - devs
-      - security-config
-      - spring-boot-config
