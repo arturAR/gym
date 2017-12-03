@@ -147,6 +147,6 @@ backend/out/
 
 #WEB-APP
 client-web/webapp/node_modules/
-
+client-web/webapp/dist/
 
 
