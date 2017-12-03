@@ -53,4 +53,24 @@ public class Locale extends BaseEntity {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Locale locale = (Locale) o;
+
+        if (!languageCode.equals(locale.languageCode)) return false;
+        if (language != null ? !language.equals(locale.language) : locale.language != null) return false;
+        return country != null ? country.equals(locale.country) : locale.country == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = languageCode.hashCode();
+        result = 31 * result + (language != null ? language.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        return result;
+    }
 }

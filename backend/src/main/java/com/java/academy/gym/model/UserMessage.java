@@ -14,7 +14,6 @@ public class UserMessage extends BaseEntity{
 
     @NotNull
     @Size(max = 100)
-    @Column(unique = true)
     private String messageKey;
 
     private String messageText;
@@ -50,5 +49,25 @@ public class UserMessage extends BaseEntity{
 
     public void setMessageText(String messageText) {
         this.messageText = messageText;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        UserMessage that = (UserMessage) o;
+
+        if (locale != null ? !locale.equals(that.locale) : that.locale != null) return false;
+        if (!messageKey.equals(that.messageKey)) return false;
+        return messageText != null ? messageText.equals(that.messageText) : that.messageText == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = locale != null ? locale.hashCode() : 0;
+        result = 31 * result + messageKey.hashCode();
+        result = 31 * result + (messageText != null ? messageText.hashCode() : 0);
+        return result;
     }
 }
