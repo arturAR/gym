@@ -23,8 +23,6 @@ public class InternationalizationController {
 
     @PostMapping
     public Map<String, String> internationalizeMessages(@RequestBody LocaleUserMessagesRequestDto userMessagesRequest) {
-        System.out.println(userMessagesRequest.getLanguageCode());
-        System.out.println(userMessagesRequest.getMessagesKeys());
         return internationalizationService.findUserMessagesByKeysAndLanguageCode(
                 userMessagesRequest.getMessagesKeys(),
                 userMessagesRequest.getLanguageCode());

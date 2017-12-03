@@ -10,11 +10,6 @@ public class LocaleUserMessagesRequestDto {
     public LocaleUserMessagesRequestDto() {
     }
 
-    public LocaleUserMessagesRequestDto(String languageCode, List<String> messagesKeys) {
-        this.languageCode = languageCode;
-        this.messagesKeys = messagesKeys;
-    }
-
     public String getLanguageCode() {
         return languageCode;
     }
