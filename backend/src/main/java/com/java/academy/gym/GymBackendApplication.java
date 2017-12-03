@@ -5,9 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 //TODO remove "exclude" when security configured
 @SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
-public class GymApplication {
+public class GymBackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(GymApplication.class, args);
+		SpringApplication.run(GymBackendApplication.class, args);
 	}
 }

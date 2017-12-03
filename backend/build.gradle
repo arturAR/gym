@@ -1,3 +1,9 @@
+ext {
+    versions = [
+            h2: '1.4.196',
+    ]
+}
+
 sourceSets {
     integrationTest {
         java {
@@ -34,6 +40,7 @@ dependencies {
     compile libs.spring_boot_security
     compile libs.spring_boot_jpa
     compile libs.database_hsqldb
+    compile "com.h2database:h2:${versions.h2}"
 
     testCompile libs.test
 }
