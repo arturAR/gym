@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface LocaleDao extends JpaRepository<Locale, Long> {
-
     Locale findByLanguageCode(String languageCode);
 }

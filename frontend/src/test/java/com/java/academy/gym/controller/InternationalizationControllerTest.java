@@ -1,6 +1,7 @@
 package com.java.academy.gym.controller;
 
-import com.java.academy.gym.dto.LocaleUserMessagesRequestDto;
+import com.java.academy.gym.model.Locale;
+import com.java.academy.gym.model.UserMessage;
 import com.java.academy.gym.service.InternationalizationService;
 import com.java.academy.gym.util.JsonUtil;
 import org.junit.Before;
@@ -21,7 +22,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 public class InternationalizationControllerTest {
-
     private MockMvc mockMvc;
 
     @Mock
@@ -40,24 +40,28 @@ public class InternationalizationControllerTest {
 
     @Test
     public void shouldReturnMapOfUserMessages() throws Exception {
-        Map<String, String> userMessages = new HashMap<>();
-        userMessages.put("MK1", "Message1");
-        userMessages.put("MK2", "Message2");
-        when(mockInternationalizationService.findUserMessagesByKeysAndLanguageCode(any(), any()))
+        Locale locale = new Locale("pl_PL", "polish", "Poland");
+        Map<String, UserMessage> userMessagesToInternationalize = new HashMap<>();
+        userMessagesToInternationalize.put("MK1", new UserMessage(locale, "MK1", ""));
+        userMessagesToInternationalize.put("MK2", new UserMessage(locale, "MK2", ""));
+        UserMessage userMessage1 = new UserMessage(locale, "MK1", "Message1");
+        UserMessage userMessage2 = new UserMessage(locale, "MK2", "Message2");
+        Map<String, UserMessage> userMessages = new HashMap<>();
+        userMessages.put("MK1", userMessage1);
+        userMessages.put("MK2", userMessage2);
+        when(mockInternationalizationService.internationalizeUserMessages(userMessagesToInternationalize))
                 .thenReturn(userMessages);
-        LocaleUserMessagesRequestDto localeUserMessagesRequestDto = new LocaleUserMessagesRequestDto();
 
         mockMvc.perform(post("/i18n")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
-                .content(JsonUtil.toJson(localeUserMessagesRequestDto)))
+                .content(JsonUtil.toJson(userMessagesToInternationalize)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(jsonPath("MK1", is("Message1")))
-                .andExpect(jsonPath("MK2", is("Message2")));
+                .andExpect(jsonPath("MK1.messageText", is("Message1")))
+                .andExpect(jsonPath("MK2.messageText", is("Message2")));
 
         verify(mockInternationalizationService, times(1))
-                .findUserMessagesByKeysAndLanguageCode(any(), any());
+                .internationalizeUserMessages(userMessagesToInternationalize);
         verifyNoMoreInteractions(mockInternationalizationService);
     }
-
 }

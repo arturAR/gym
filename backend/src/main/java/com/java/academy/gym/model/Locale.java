@@ -1,25 +1,29 @@
 package com.java.academy.gym.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-@Table(name = "locales")
-public class Locale extends BaseEntity {
+@Table(name = "LOCALES")
+public class Locale implements Serializable {
+    private static final long serialVersionUID = -3542746401741355126L;
 
-    @NotNull
-    @Size(max = 10)
-    @Column(unique = true)
+    @Id
+    @Column(name = "LANG_CODE", nullable = false, unique = true, length = 10)
     private String languageCode;
 
-    @Size(max = 100)
+    @Column(name = "LANGUAGE", length = 255)
     private String language;
 
-    @Size(max = 100)
+    @Column(name = "COUNTRY", length = 255)
     private String country;
+
+    @JsonIgnore
+    @Column(name = "VERSION")
+    @Version
+    private Integer version;
 
     public Locale() {}
 
@@ -27,6 +31,7 @@ public class Locale extends BaseEntity {
         this.languageCode = languageCode;
         this.language = language;
         this.country = country;
+        this.version = 1;
     }
 
     public String getLanguageCode() {
@@ -51,6 +56,14 @@ public class Locale extends BaseEntity {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     @Override

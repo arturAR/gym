@@ -1,21 +1,20 @@
 package com.java.academy.gym.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "userMessages")
+@Table(name = "USER_MESSAGES")
 public class UserMessage extends BaseEntity {
+    private static final long serialVersionUID = 7871352451627547465L;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "locale_id", nullable = false)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "LANG_CODE", nullable = false)
     private Locale locale;
 
-    @NotNull
-    @Size(max = 500)
+    @Column(name = "MSG_KEY", nullable = false, length = 500)
     private String messageKey;
 
+    @Column(name = "MSG_TEXT", nullable = false)
     private String messageText;
 
     public UserMessage() {}
@@ -24,6 +23,7 @@ public class UserMessage extends BaseEntity {
         this.locale = locale;
         this.messageKey = messageKey;
         this.messageText = messageText;
+        this.version = 1;
     }
 
     public Locale getLocale() {

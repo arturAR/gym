@@ -6,6 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface UserMessageDao extends JpaRepository<UserMessage, Long> {
-
-    UserMessage findByMessageKeyAndLocaleId(String messageKey, Long localeId);
+    UserMessage findByMessageKeyAndLocaleLanguageCode(String messageKey, String languageCode);
 }
