@@ -7,8 +7,7 @@ public class LocaleUserMessagesRequestDto {
     private String languageCode;
     private List<String> messagesKeys;
 
-    public LocaleUserMessagesRequestDto() {
-    }
+    public LocaleUserMessagesRequestDto() {}
 
     public String getLanguageCode() {
         return languageCode;

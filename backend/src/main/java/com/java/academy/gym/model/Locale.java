@@ -21,8 +21,7 @@ public class Locale extends BaseEntity {
     @Size(max = 100)
     private String country;
 
-    public Locale() {
-    }
+    public Locale() {}
 
     public Locale(String languageCode, String language, String country) {
         this.languageCode = languageCode;

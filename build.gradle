@@ -10,6 +10,7 @@ subprojects {
                 hibernate_ehcache  : '5.0.11.Final',
                 mysql              : '5.1.43',
                 hsqldb             : '2.3.4',
+                h2                 : '1.4.196'
         ]
 
         libs = [:]
@@ -31,6 +32,8 @@ subprojects {
         libs.database_mysql = "mysql:mysql-connector-java:${versions.mysql}"
 
         libs.database_hsqldb = "org.hsqldb:hsqldb:${versions.hsqldb}"
+
+        libs.database_h2 = "com.h2database:h2:${versions.h2}"
 
         libs.test = ["junit:junit:${versions.junit}",
                      "org.springframework.boot:spring-boot-starter-test:${versions.spring_boot}"]

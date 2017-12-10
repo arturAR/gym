@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import java.util.*;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -42,10 +42,10 @@ public class InternationalizationServiceImplTest {
         Map<String, String> userMessages = internationalizationService
                 .findUserMessagesByKeysAndLanguageCode(messagesKeys, languageCode);
 
-        Map<String, String> expectedUserMessages = new HashMap<>();
-        expectedUserMessages.put(userMessage1.getMessageKey(), userMessage1.getMessageText());
-        expectedUserMessages.put(userMessage2.getMessageKey(), userMessage2.getMessageText());
-        assertEquals(expectedUserMessages, userMessages);
+        assertTrue(userMessages.containsKey("MK1"));
+        assertTrue(userMessages.containsValue("Message1"));
+        assertTrue(userMessages.containsKey("MK2"));
+        assertTrue(userMessages.containsValue("Message2"));
     }
 
 }

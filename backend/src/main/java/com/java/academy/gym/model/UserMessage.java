@@ -6,20 +6,19 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "userMessages")
-public class UserMessage extends BaseEntity{
+public class UserMessage extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "locale_id", nullable = false)
     private Locale locale;
 
     @NotNull
-    @Size(max = 100)
+    @Size(max = 500)
     private String messageKey;
 
     private String messageText;
 
-    public UserMessage() {
-    }
+    public UserMessage() {}
 
     public UserMessage(Locale locale, String messageKey, String messageText) {
         this.locale = locale;

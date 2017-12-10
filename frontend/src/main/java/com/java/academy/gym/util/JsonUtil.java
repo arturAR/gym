@@ -6,8 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public final class JsonUtil {
 
-    private JsonUtil() {
-    }
+    private JsonUtil() {}
 
     public static byte[] toJson(Object object) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
