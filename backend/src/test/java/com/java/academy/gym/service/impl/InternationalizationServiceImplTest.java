@@ -23,7 +23,7 @@ public class InternationalizationServiceImplTest {
     public void setup() {
         localeDao = mock(LocaleDao.class);
         userMessageDao = mock(UserMessageDao.class);
-        internationalizationService = new InternationalizationServiceImpl(userMessageDao);
+        internationalizationService = new InternationalizationServiceImpl(localeDao, userMessageDao);
     }
 
     @Test
