@@ -145,3 +145,6 @@ frontend/out/
 backend/build/
 backend/out/
 
+gradle/
+gradlew
+gradlew.bat
