@@ -1,16 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import App from './components/App';
-import {Whoops404} from './components/error/Whoops404';
+import { Whoops404 } from './components/error/Whoops404';
 import registerServiceWorker from './registerServiceWorker';
-import { Router, Route, hashHistory} from 'react-router'
+import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './index.css';
 
 ReactDOM.render(
-  <Router history={hashHistory}>
-    <Route path="/" component={App}/>
-      <Route path="*" component={Whoops404}/>
-  </Router>,
-  document.getElementById('root') as HTMLElement
+    <Router>
+        <Switch>
+            <Route path="/" exact={true} component={App}/>
+            <Route component={Whoops404}/>
+        </Switch>
+    </Router>,
+    document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
