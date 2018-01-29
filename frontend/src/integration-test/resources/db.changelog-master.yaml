@@ -1,0 +1,38 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: mprtcz
+      changes:
+        - createTable:
+            tableName: userProfile
+            columns:
+              - column:
+                  name: id
+                  type: long
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: first_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: last_name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+  - changeSet:
+      id: 2
+      author: mprtcz
+      changes:
+        - insert:
+            tableName: userProfile
+            columns:
+              - column:
+                  name: first_name
+                  value: Michal
+              - column:
+                  name: last_name
+                  value: Partacz
