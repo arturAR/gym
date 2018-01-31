@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+  <changeSet id="1" author="Artur Rosa">
+    <comment>Locales</comment>
+    <insert tableName="LOCALES">
+      <column name="VERSION">0</column>
+      <column name="LANG_CODE">PL</column>
+      <column name="LANGUAGE">Polski</column>
+      <column name="COUNTRY">Polska</column>
+    </insert>
+  </changeSet>
+
+  <changeSet id="2" author="Artur Rosa">
+    <comment>Messages</comment>
+
+    <!-- ============== i18n MENU ===================================== -->
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.polish</column>
+      <column name="MSG_TEXT">Polski</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.polish</column>
+      <column name="MSG_TEXT">Polish</column>
+    </insert>
+
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.english</column>
+      <column name="MSG_TEXT">Angielski</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.english</column>
+      <column name="MSG_TEXT">English</column>
+    </insert>
+
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.russian</column>
+      <column name="MSG_TEXT">Rosyjski</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.russian</column>
+      <column name="MSG_TEXT">Russian</column>
+    </insert>
+
+    <!-- ============== MAIN MENU ===================================== -->
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.about</column>
+      <column name="MSG_TEXT">O nas</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.about</column>
+      <column name="MSG_TEXT">About</column>
+    </insert>
+
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.clubs</column>
+      <column name="MSG_TEXT">Nasze kluby</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.clubs</column>
+      <column name="MSG_TEXT">Clubs</column>
+    </insert>
+
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.events</column>
+      <column name="MSG_TEXT">Wydarzenia</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.events</column>
+      <column name="MSG_TEXT">Events</column>
+    </insert>
+
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.contact</column>
+      <column name="MSG_TEXT">Kontakt</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.contact</column>
+      <column name="MSG_TEXT">Contact</column>
+    </insert>
+
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">nav.i18n.login</column>
+      <column name="MSG_TEXT">Login</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">nav.i18n.login</column>
+      <column name="MSG_TEXT">Login</column>
+    </insert>
+  </changeSet>
+</databaseChangeLog>
