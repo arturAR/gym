@@ -25,8 +25,8 @@ class App extends React.Component {
                 <span>{this.returnString('Hello World!')}</span>
 
 
-                var languages = this.props.languages.map(language =>
-                    <Locale key={language.languageCode} language={language}/>
+                var locales = this.props.locales.map(locale =>
+                    <Locale key={locale.languageCode} locale={locale}/>
                 );
                 <table>
                     <tbody>
@@ -35,7 +35,7 @@ class App extends React.Component {
                         <th>LANGUAGE</th>
                         <th>COUNTRY</th>
                     </tr>
-                    {languages}
+                    {locales}
                     </tbody>
                 </table>
                 )
