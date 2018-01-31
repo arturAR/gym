@@ -4,7 +4,7 @@ import { Navbar } from './main/Navbar';
 
 class App extends React.Component {
 
-    constructor(props) {
+   /* constructor(props) {
         super(props);
         this.state = {locales: []};
     }
@@ -14,7 +14,7 @@ class App extends React.Component {
             this.setState({locales: response.entity.locales});
         });
     }
-
+*/
     render() {
         return (
             <div className="App">
@@ -24,8 +24,18 @@ class App extends React.Component {
                 </p>
                 <span>{this.returnString('Hello World!')}</span>
 
+            </div>
+        );
+    }
+}
 
-                var locales = this.props.locales.map(locale =>
+export default App;
+
+
+/*
+
+// TODO move to empty line below "Hello World" span
+    var locales = this.props.locales.map(locale =>
                     <Locale key={locale.languageCode} locale={locale}/>
                 );
                 <table>
@@ -38,10 +48,6 @@ class App extends React.Component {
                     {locales}
                     </tbody>
                 </table>
-                )
-            </div>
-        );
-    }
-}
 
-export default App;
+
+*/
