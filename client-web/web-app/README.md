@@ -1,3 +1,11 @@
+## Important
+
+To run this app without any stupid dependency problems:
+
+`npm install npm@latest` in this folder.
+
+Then, `npm start`
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
