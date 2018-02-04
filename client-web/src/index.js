@@ -9,10 +9,10 @@ import './index.css';
 ReactDOM.render(
     <Router>
         <Switch>
-            <Route path="/" exact={true} component={App}/>
+            <Route path="/" exact={true} component={App} />
             <Route component={Whoops404}/>
         </Switch>
     </Router>,
-    document.getElementById('root') as HTMLElement
+    document.getElementById('root')
 );
 registerServiceWorker();

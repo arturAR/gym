@@ -20,9 +20,9 @@ class App extends React.Component {
             <div className="App">
                 <Navbar/>
                 <p className="App-intro">
-                    To get started, edit <code>src/App.tsx</code> and save to reload.
+                    To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
-                <span>{this.returnString('Hello World!')}</span>
+                <span>{'Hello World!'}</span>
 
             </div>
         );
