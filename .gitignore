@@ -145,6 +145,8 @@ frontend/out/
 backend/build/
 backend/out/
 
+node_modules/
+
 gradle/
 gradlew
 gradlew.bat

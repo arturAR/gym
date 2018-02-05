@@ -15,4 +15,12 @@
       <column name="COUNTRY">Great Britain</column>
     </insert>
   </changeSet>
+  <changeSet id="2" author="mprtcz">
+    <comment>Users</comment>
+    <insert tableName="USER_PROFILES">
+      <column name="VERSION">0</column>
+      <column name="FIRST_NAME">Tony</column>
+      <column name="SECOND_NAME">Stark</column>
+    </insert>
+  </changeSet>
 </databaseChangeLog>
