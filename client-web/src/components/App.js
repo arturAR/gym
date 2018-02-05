@@ -4,17 +4,24 @@ import { Navbar } from './main/Navbar';
 
 class App extends React.Component {
 
-   /* constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {locales: []};
     }
 
     componentDidMount() {
-        client({method: 'GET', path: '/i18n/locales'}).done((response: any) => {
-            this.setState({locales: response.entity.locales});
+        fetch('http://localhost:8080/i18n/locales')
+            .then(function(response) {
+                //this.setState({locales: response.json()});
+                console.log(response);
+                return response.json()
+            }).then(function(json) {
+            console.log('parsed json', json)
+        }).catch(function(ex) {
+            console.log('parsing failed', ex)
         });
     }
-*/
+
     render() {
         return (
             <div className="App">

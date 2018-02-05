@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './Navbar.css';
-import I18n from "./I18n";
+import {I18n} from "./I18n";
 const logo = require('./../logo.svg');
 
 export const Navbar = () => {
