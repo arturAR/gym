@@ -35,15 +35,16 @@ public class InternationalizationServiceImplTest {
         when(userMessageDao.findByMessageKeyAndLocaleLanguageCode("MK1", languageCode)).thenReturn(userMessage1);
         when(userMessageDao.findByMessageKeyAndLocaleLanguageCode("MK2", languageCode)).thenReturn(userMessage2);
 
-        Map<String, UserMessage> userMessagesToInternationalize = new HashMap<>();
-        userMessagesToInternationalize.put("MK1", new UserMessage(locale, "MK1", ""));
-        userMessagesToInternationalize.put("MK2", new UserMessage(locale, "MK2", ""));
-        Map<String, UserMessage> userMessages = internationalizationService
+        Map<String, String> userMessagesToInternationalize = new HashMap<>();
+        userMessagesToInternationalize.put("lang", "pl_PL");
+        userMessagesToInternationalize.put("MK1", "");
+        userMessagesToInternationalize.put("MK2", "");
+        Map<String, String> userMessages = internationalizationService
                 .internationalizeUserMessages(userMessagesToInternationalize);
 
         assertTrue(userMessages.containsKey("MK1"));
-        assertTrue(userMessages.containsValue(userMessage1));
+        assertTrue(userMessages.containsValue(userMessage1.getMessageText()));
         assertTrue(userMessages.containsKey("MK2"));
-        assertTrue(userMessages.containsValue(userMessage2));
+        assertTrue(userMessages.containsValue(userMessage2.getMessageText()));
     }
 }

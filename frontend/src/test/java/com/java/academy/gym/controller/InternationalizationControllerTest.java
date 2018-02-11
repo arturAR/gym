@@ -41,14 +41,16 @@ public class InternationalizationControllerTest {
     @Test
     public void shouldReturnMapOfUserMessages() throws Exception {
         Locale locale = new Locale("pl_PL", "polish", "Poland");
-        Map<String, UserMessage> userMessagesToInternationalize = new HashMap<>();
-        userMessagesToInternationalize.put("MK1", new UserMessage(locale, "MK1", ""));
-        userMessagesToInternationalize.put("MK2", new UserMessage(locale, "MK2", ""));
+        Map<String, String> userMessagesToInternationalize = new HashMap<>();
+        userMessagesToInternationalize.put("MK1", "");
+        userMessagesToInternationalize.put("MK2", "");
         UserMessage userMessage1 = new UserMessage(locale, "MK1", "Message1");
         UserMessage userMessage2 = new UserMessage(locale, "MK2", "Message2");
-        Map<String, UserMessage> userMessages = new HashMap<>();
-        userMessages.put("MK1", userMessage1);
-        userMessages.put("MK2", userMessage2);
+
+        Map<String, String> userMessages = new HashMap<>();
+        userMessages.put("MK1", userMessage1.getMessageText());
+        userMessages.put("MK2", userMessage2.getMessageText());
+
         when(mockInternationalizationService.internationalizeUserMessages(userMessagesToInternationalize))
                 .thenReturn(userMessages);
 
@@ -57,8 +59,8 @@ public class InternationalizationControllerTest {
                 .content(JsonUtil.toJson(userMessagesToInternationalize)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
-                .andExpect(jsonPath("MK1.messageText", is("Message1")))
-                .andExpect(jsonPath("MK2.messageText", is("Message2")));
+                .andExpect(jsonPath("MK1", is("Message1")))
+                .andExpect(jsonPath("MK2", is("Message2")));
 
         verify(mockInternationalizationService, times(1))
                 .internationalizeUserMessages(userMessagesToInternationalize);
