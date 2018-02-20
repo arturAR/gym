@@ -1,31 +1,44 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
+
+import {
+    requestDefaultLanguage,
+    requestLocales,
+    requestI18N,
+} from './AppAction'
+
 import './App.css';
 import Navbar from './main/Navbar';
-import HttpUtils from "../utils/HttpUtils";
-import ExternalUrls from "../constants/ExternalUrls";
 
 class App extends React.Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            locales: [],
-        };
+    componentDidMount = () => {
+        this.props.requestDefaultLanguage();
+        this.props.requestLocales();
+    };
+
+    componentWillReceiveProps(nextProps) {
+        if (!nextProps.isFetchingI18N && !nextProps.isReceivedI18N && nextProps.langCode) {
+            nextProps.requestI18N(nextProps.langCode);
+        }
     }
 
-    componentDidMount = () => {
-        HttpUtils.getJSON(
-            ExternalUrls.LOCALIZATION,
-            HttpUtils.METHOD.GET,
-            data => this.setState({locales: data}),
-            ex => console.log('parsing failed', ex));
+    changeLocalHandler = (langCode) => {
+        this.props.requestI18N(langCode);
     };
 
     render() {
-        const {locales} = this.state;
+        const {isFetchingDefaultLanguage, langCode, isFetchingLocales, locales} = this.props;
+        if (isFetchingDefaultLanguage || isFetchingLocales) {
+            return (
+                <div>Loading...</div>
+            )
+        }
+
         return (
             <div className="App">
-                <Navbar/>
+                <Navbar i18n={this.props.i18n} changeLocalHandler={this.changeLocalHandler}/>
                 <p className="App-intro">
                     To get started, edit <code>src/App.js</code> and save to reload.
                 </p>
@@ -43,4 +56,32 @@ class App extends React.Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => {
+    const {
+        isFetchingDefaultLanguage,
+        langCode,
+        isFetchingLocales,
+        locales,
+        isFetchingI18N,
+        isReceivedI18N,
+        i18n,
+    } = state.appReducer;
+
+    return {
+        isFetchingDefaultLanguage,
+        langCode,
+        isFetchingLocales,
+        locales,
+        isFetchingI18N,
+        isReceivedI18N,
+        i18n,
+    }
+};
+
+const mapDispatchToProps = dispatch => ({
+    requestDefaultLanguage: () => dispatch(requestDefaultLanguage()),
+    requestLocales: () => dispatch(requestLocales()),
+    requestI18N: (lang) => dispatch(requestI18N(lang)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
