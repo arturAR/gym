@@ -1,18 +1,28 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import App from './components/App';
-import { Whoops404 } from './components/error/Whoops404';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from "react-redux";
+import thunk from "redux-thunk";
+import logger from 'redux-logger';
+import {createStore, applyMiddleware} from "redux";
+
+import AppRouter from './AppRouter';
+import rootReducer from './rootReducer'
+
 import registerServiceWorker from './registerServiceWorker';
-import {BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
 import './index.css';
 
-ReactDOM.render(
-    <Router>
-        <Switch>
-            <Route path="/" exact={true} component={App} />
-            <Route component={Whoops404}/>
-        </Switch>
-    </Router>,
-    document.getElementById('root')
+const middleware = [thunk];
+middleware.push(logger);
+
+const store = createStore(
+    rootReducer,
+    applyMiddleware(...middleware)
 );
+
+ReactDOM.render(
+    <Provider store={store}>
+        <AppRouter/>
+    </Provider>,
+    document.getElementById('root'));
 registerServiceWorker();
