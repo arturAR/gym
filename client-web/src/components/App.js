@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Navbar from './main/Navbar';
+import HttpUtils from "../utils/HttpUtils";
+import ExternalUrls from "../constants/ExternalUrls";
 
 class App extends React.Component {
 
@@ -12,16 +14,15 @@ class App extends React.Component {
     }
 
     componentDidMount = () => {
-        fetch('http://localhost:8080/i18n/locales')
-            .then(response => response.json())
-            .then(data => (this.setState({ locales: data })))
-            .catch(function(ex) {
-                console.log('parsing failed', ex)
-            });
-    }
+        HttpUtils.getJSON(
+            ExternalUrls.LOCALIZATION,
+            HttpUtils.METHOD.GET,
+            data => this.setState({locales: data}),
+            ex => console.log('parsing failed', ex));
+    };
 
     render() {
-        const { locales } = this.state;
+        const {locales} = this.state;
         return (
             <div className="App">
                 <Navbar/>
