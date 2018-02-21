@@ -46,6 +46,7 @@ export const requestI18N = (langCode) => (dispatch, getState) => {
             "nav.i18n.events": '',
             "nav.i18n.contact": '',
             "nav.i18n.login": '',
+            "content.i18n.languages": '',
         },
         (i18n) => dispatch({type: APP_I18N_REQUEST_SUCCESS, i18n}),
         (error) => dispatch({type: APP_I18N_REQUEST_FAILED, error: error}));

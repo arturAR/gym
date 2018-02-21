@@ -108,5 +108,17 @@
       <column name="MSG_KEY">nav.i18n.login</column>
       <column name="MSG_TEXT">Login</column>
     </insert>
+
+    <!-- ============== CONTENT ===================================== -->
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">PL</column>
+      <column name="MSG_KEY">content.i18n.languages</column>
+      <column name="MSG_TEXT">Lista języków</column>
+    </insert>
+    <insert tableName="USER_MESSAGES">
+      <column name="LANG_CODE">EN</column>
+      <column name="MSG_KEY">content.i18n.languages</column>
+      <column name="MSG_TEXT">Languages list</column>
+    </insert>
   </changeSet>
 </databaseChangeLog>

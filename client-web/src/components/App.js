@@ -10,6 +10,8 @@ import {
 
 import './App.css';
 import Navbar from './main/Navbar';
+import Footer from "./main/Footer";
+import Content from "./main/Content";
 
 class App extends React.Component {
 
@@ -39,18 +41,8 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Navbar i18n={this.props.i18n} changeLocalHandler={this.changeLocalHandler}/>
-                <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
-                </p>
-                <span>{'Hello World!'}</span>
-
-                <div>
-                    {locales.map(locale =>
-                        <div key={locale.languageCode}>
-                            {locale.language} + {locale.languageCode} + {locale.country}
-                        </div>
-                    )}
-                </div>
+                <Content i18n={this.props.i18n} locales={this.props.locales}/>
+                <Footer/>
             </div>
         );
     }
