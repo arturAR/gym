@@ -10,6 +10,9 @@ subprojects {
                 hibernate_ehcache  : '5.0.11.Final',
                 mysql              : '5.1.43',
                 hsqldb             : '2.3.4',
+                h2                 : '1.4.196',
+                json               : '2.8.10',
+                liquibase          : '3.5.3',
         ]
 
         libs = [:]
@@ -32,11 +35,19 @@ subprojects {
 
         libs.database_hsqldb = "org.hsqldb:hsqldb:${versions.hsqldb}"
 
+        libs.database_h2 = "com.h2database:h2:${versions.h2}"
+
         libs.test = ["junit:junit:${versions.junit}",
                      "org.springframework.boot:spring-boot-starter-test:${versions.spring_boot}"]
 
         libs.tomcat_embed = ["org.springframework.boot:spring-boot-starter-tomcat:${versions.spring_boot}",
                              "org.apache.tomcat.embed:tomcat-embed-jasper"]
+
+        libs.json = ["com.fasterxml.jackson.core:jackson-core:${versions.json}",
+                     "com.fasterxml.jackson.core:jackson-annotations:${versions.json}",
+                     "com.fasterxml.jackson.core:jackson-databind:${versions.json}"]
+
+        libs.liquibase = "org.liquibase:liquibase-core:${versions.liquibase}"
     }
 
     apply plugin: 'java'

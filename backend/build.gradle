@@ -34,6 +34,8 @@ dependencies {
     compile libs.spring_boot_security
     compile libs.spring_boot_jpa
     compile libs.database_hsqldb
+    compile libs.database_h2
+    compile libs.json
 
     testCompile libs.test
 }

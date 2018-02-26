@@ -49,6 +49,7 @@ apply plugin: 'org.springframework.boot'
 dependencies {
     compile project(":backend")
     compile libs.spring_boot_web
+    compile libs.liquibase
 
     testCompile libs.test
 }
