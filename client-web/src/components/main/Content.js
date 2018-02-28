@@ -19,6 +19,10 @@ export default class Content extends React.Component {
                         </div>
                     )}
                 </div>
+
+                <p className="App-intro">
+                    CLUBS:
+                </p>
             </div>
         );
     }
