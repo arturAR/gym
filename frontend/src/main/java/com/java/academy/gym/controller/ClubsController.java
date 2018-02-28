@@ -1,6 +1,7 @@
 package com.java.academy.gym.controller;
 
 import com.java.academy.gym.model.Club;
+import com.java.academy.gym.model.ContactInfo;
 import com.java.academy.gym.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

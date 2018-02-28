@@ -8,7 +8,7 @@ import java.util.List;
 public class Club extends BaseEntity {
 
     private String name;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CONTACT_INFOS_ID")
     private ContactInfo contactInfo;
     private String description;

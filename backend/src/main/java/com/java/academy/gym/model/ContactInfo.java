@@ -1,5 +1,7 @@
 package com.java.academy.gym.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
@@ -9,6 +11,7 @@ import javax.persistence.Table;
 @Table(name = "CONTACT_INFOS")
 public class ContactInfo extends BaseEntity {
 
+    @JsonIgnore
     @OneToOne(mappedBy = "contactInfo")
     private Club club;
     @Column(name = "ADDRESS", nullable = false, length = 500)
