@@ -16,6 +16,3 @@ addons:
     organization: "mprtcz-github"
     branches:
       - master
-      - devs
-      - security-config
-      - spring-boot-config

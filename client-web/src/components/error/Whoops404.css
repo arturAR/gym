@@ -1,0 +1,13 @@
+.not-found {
+    border: solid;
+    text-align: center;
+}
+
+.back-button {
+    float: right;
+    margin: 20px;
+    padding-top: 277px;
+    text-decoration: none;
+    font-weight: 700;
+    color: black;
+}

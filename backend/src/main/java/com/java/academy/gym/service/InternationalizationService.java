@@ -8,5 +8,5 @@ import java.util.Map;
 public interface InternationalizationService {
     List<Locale> findAllLocales();
 
-    Map<String, UserMessage> internationalizeUserMessages(Map<String, UserMessage> userMessages);
+    Map<String, String> internationalizeUserMessages(Map<String, String> userMessages);
 }

@@ -1,0 +1,4 @@
+.flags-container {
+    float: right;
+    display: grid;
+}

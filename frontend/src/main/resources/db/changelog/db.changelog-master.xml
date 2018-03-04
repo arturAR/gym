@@ -8,5 +8,5 @@
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
   <include file="patches/patch-0-locales.xml" relativeToChangelogFile="true"/>
-  <include file="patches/patch-0-user-profiles.xml" relativeToChangelogFile="true"/>
+  <include file="patches/patch-1-locales.xml" relativeToChangelogFile="true"/>
 </databaseChangeLog>
