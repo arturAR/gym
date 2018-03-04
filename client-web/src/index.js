@@ -5,7 +5,7 @@ import thunk from "redux-thunk";
 import logger from 'redux-logger';
 import {createStore, applyMiddleware} from "redux";
 
-import AppRouter from './AppRouter';
+import AppRouter from './routers/AppRouter';
 import rootReducer from './rootReducer'
 
 import registerServiceWorker from './registerServiceWorker';
