@@ -1,0 +1,12 @@
+.content-container {
+  background-color: white;
+  color: black;
+  height: 700px;
+  padding: 10px;
+  text-align: center;
+}
+
+.App-intro {
+  font-size: large;
+}
+

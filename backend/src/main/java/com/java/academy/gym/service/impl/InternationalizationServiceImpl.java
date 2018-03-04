@@ -30,14 +30,14 @@ public class InternationalizationServiceImpl implements InternationalizationServ
     }
 
     @Override
-    public Map<String, UserMessage> internationalizeUserMessages(Map<String, UserMessage> userMessages) {
+    public Map<String, String> internationalizeUserMessages(Map<String, String> userMessages) {
+        String locale = userMessages.get("lang");
         return userMessages
                 .entrySet()
                 .stream()
-                .map(entry -> Optional.ofNullable(userMessageDao.findByMessageKeyAndLocaleLanguageCode(entry.getKey(),
-                        entry.getValue().getLocale().getLanguageCode())))
+                .map(entry -> Optional.ofNullable(userMessageDao.findByMessageKeyAndLocaleLanguageCode(entry.getKey(), locale)))
                 .filter(Optional::isPresent)
                 .map(Optional::get)
-                .collect(Collectors.toMap(UserMessage::getMessageKey, userMessage -> userMessage));
+                .collect(Collectors.toMap(UserMessage::getMessageKey, UserMessage::getMessageText));
     }
 }
