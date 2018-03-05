@@ -13,10 +13,15 @@
       <column name="PHONE_NUMBER">12 396 61 11</column>
       <column name="CITY">Cracow</column>
     </insert>
+
     <insert tableName="CLUBS">
-      <column name="name">Bora Bora</column>
-      <column name="description">TODO</column>
+      <column name="NAME">Bora Bora</column>
       <column name="CONTACT_INFOS_ID">1</column>
+    </insert>
+    <insert tableName="CLUB_LOCALS">
+      <column name="REF_CLUB_ID">1</column>
+      <column name="LANG_CODE">EN</column>
+      <column name="DESCRIPTION">TODO</column>
     </insert>
   </changeSet>
 

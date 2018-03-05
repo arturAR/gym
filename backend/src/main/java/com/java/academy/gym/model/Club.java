@@ -1,7 +1,11 @@
 package com.java.academy.gym.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Entity
 @Table(name = "CLUBS")
@@ -11,6 +15,15 @@ public class Club extends BaseEntity {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CONTACT_INFOS_ID")
     private ContactInfo contactInfo;
+
+    @JsonIgnore
+    @ElementCollection
+    @CollectionTable(name = "CLUB_LOCALS", joinColumns = {
+            @JoinColumn(name = "REF_CLUB_ID", referencedColumnName = "ID")})
+    @MapKeyJoinColumn(name = "LANG_CODE")
+    private Map<Locale, ClubLocal> mapLocals = new HashMap<>();
+
+    @Transient
     private String description;
 
     //TODO add photos for gallery
@@ -45,6 +58,14 @@ public class Club extends BaseEntity {
 
     public void setContactInfo(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
+    }
+
+    public Map<Locale, ClubLocal> getMapLocals() {
+        return mapLocals;
+    }
+
+    public void setMapLocals(Map<Locale, ClubLocal> mapLocals) {
+        this.mapLocals = mapLocals;
     }
 
     public String getDescription() {

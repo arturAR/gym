@@ -2,9 +2,11 @@ package com.java.academy.gym;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 //TODO remove "exclude" when security configured
 @SpringBootApplication(exclude = org.springframework.boot.autoconfigure.security.SecurityAutoConfiguration.class)
+@ComponentScan("com.java.academy.gym")
 public class GymBackendApplication {
 
 	public static void main(String[] args) {
