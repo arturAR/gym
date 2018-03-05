@@ -11,7 +11,6 @@ import java.util.Map;
 @Table(name = "CLUBS")
 public class Club extends BaseEntity {
 
-    private String name;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "CONTACT_INFOS_ID")
     private ContactInfo contactInfo;
@@ -24,7 +23,7 @@ public class Club extends BaseEntity {
     private Map<Locale, ClubLocal> mapLocals = new HashMap<>();
 
     @Transient
-    private String description;
+    private ClubLocal clubLocal;
 
     //TODO add photos for gallery
     @Transient
@@ -38,18 +37,8 @@ public class Club extends BaseEntity {
 
     public Club() {}
 
-    public Club(String name, ContactInfo contactInfo, String description) {
-        this.name = name;
+    public Club(ContactInfo contactInfo) {
         this.contactInfo = contactInfo;
-        this.description = description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public ContactInfo getContactInfo() {
@@ -60,20 +49,20 @@ public class Club extends BaseEntity {
         this.contactInfo = contactInfo;
     }
 
+    public ClubLocal getClubLocal() {
+        return clubLocal;
+    }
+
+    public void setClubLocal(ClubLocal clubLocal) {
+        this.clubLocal = clubLocal;
+    }
+
     public Map<Locale, ClubLocal> getMapLocals() {
         return mapLocals;
     }
 
     public void setMapLocals(Map<Locale, ClubLocal> mapLocals) {
         this.mapLocals = mapLocals;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<String> getPictures() {

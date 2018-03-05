@@ -13,15 +13,69 @@
       <column name="PHONE_NUMBER">12 396 61 11</column>
       <column name="CITY">Cracow</column>
     </insert>
-
     <insert tableName="CLUBS">
-      <column name="NAME">Bora Bora</column>
+      <column name="ID">1</column>
       <column name="CONTACT_INFOS_ID">1</column>
     </insert>
     <insert tableName="CLUB_LOCALS">
       <column name="REF_CLUB_ID">1</column>
       <column name="LANG_CODE">EN</column>
-      <column name="DESCRIPTION">TODO</column>
+      <column name="NAME">Bora Bora</column>
+      <column name="DESCRIPTION">Super Gym!</column>
+    </insert>
+    <insert tableName="CLUB_LOCALS">
+      <column name="REF_CLUB_ID">1</column>
+      <column name="LANG_CODE">PL</column>
+      <column name="NAME">Bora Bora</column>
+      <column name="DESCRIPTION">Super Siłownia!</column>
+    </insert>
+
+
+    <comment>Cracow Rynek Główny</comment>
+    <insert tableName="CONTACT_INFOS">
+      <column name="ADDRESS">Rynek Główny 13</column>
+      <column name="PHONE_NUMBER">12 396 61 11</column>
+      <column name="CITY">Cracow</column>
+    </insert>
+    <insert tableName="CLUBS">
+      <column name="ID">2</column>
+      <column name="CONTACT_INFOS_ID">2</column>
+    </insert>
+    <insert tableName="CLUB_LOCALS">
+      <column name="REF_CLUB_ID">2</column>
+      <column name="LANG_CODE">EN</column>
+      <column name="NAME">Main Market</column>
+      <column name="DESCRIPTION">Super Gym!</column>
+    </insert>
+    <insert tableName="CLUB_LOCALS">
+      <column name="REF_CLUB_ID">2</column>
+      <column name="LANG_CODE">PL</column>
+      <column name="NAME">Rynek Główny</column>
+      <column name="DESCRIPTION">Super Siłownia!</column>
+    </insert>
+
+
+    <comment>Opolska</comment>
+    <insert tableName="CONTACT_INFOS">
+      <column name="ADDRESS">Opolska 114</column>
+      <column name="PHONE_NUMBER">12 396 61 11</column>
+      <column name="CITY">Cracow</column>
+    </insert>
+    <insert tableName="CLUBS">
+      <column name="ID">3</column>
+      <column name="CONTACT_INFOS_ID">3</column>
+    </insert>
+    <insert tableName="CLUB_LOCALS">
+      <column name="REF_CLUB_ID">3</column>
+      <column name="LANG_CODE">EN</column>
+      <column name="NAME">Opolska</column>
+      <column name="DESCRIPTION">Super Gym!</column>
+    </insert>
+    <insert tableName="CLUB_LOCALS">
+      <column name="REF_CLUB_ID">3</column>
+      <column name="LANG_CODE">PL</column>
+      <column name="NAME">Opolska</column>
+      <column name="DESCRIPTION">Super Siłownia!</column>
     </insert>
   </changeSet>
 

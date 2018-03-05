@@ -4,6 +4,7 @@ import com.java.academy.gym.model.Club;
 import com.java.academy.gym.model.ContactInfo;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ClubService {
 
@@ -11,7 +12,7 @@ public interface ClubService {
 
     List<Club> findClubsByCity(String city);
 
-    Club findClubByName(String name);
+    Optional<Club> findClubByName(Long id, String langCode);
 
     ContactInfo getInfoAboutClubByClubName(String name);
 }

@@ -20,10 +20,12 @@ public class ClubRepoTest extends BaseITest {
     @Test
     public void testFindClubByNameAndLangCode() {
         String langCode = "EN";
+        Long id = 1L;
         String name = "Bora Bora";
         String description = "Super Gym!";
-        Optional<Club> clubOptional = clubRepo.findClubByNameAndLangCode(name, langCode);
+        Optional<Club> clubOptional = clubRepo.findClubByNameAndLangCode(id, langCode);
         assertTrue(clubOptional.isPresent());
-        assertEquals(description, clubOptional.get().getDescription());
+        assertEquals(description, clubOptional.get().getClubLocal().getDescription());
+        assertEquals(name, clubOptional.get().getClubLocal().getName());
     }
 }
