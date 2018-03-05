@@ -43,7 +43,7 @@ public class ClubServiceImpl implements ClubService {
     }
 
     @Override
-    public ContactInfo getInfoAboutClubByClubName(String name) {
-        return contactInfoDao.getContactInfoByClubName(name);
+    public ContactInfo getInfoAboutClubByClubId(Long clubId) {
+        return contactInfoDao.findOne(clubId);
     }
 }

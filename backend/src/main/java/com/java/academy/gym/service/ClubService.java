@@ -14,5 +14,5 @@ public interface ClubService {
 
     Optional<Club> findClubByName(Long id, String langCode);
 
-    ContactInfo getInfoAboutClubByClubName(String name);
+    ContactInfo getInfoAboutClubByClubId(Long clubId);
 }
