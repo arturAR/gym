@@ -16,6 +16,7 @@ public class ClubRepo extends BaseRepository {
 
     @SuppressWarnings("unchecked")
     public Optional<Club> findClubByNameAndLangCode(Long id, String langCode) {
+        // TODO add contact info join
         List<Object[]> result = getEntityManager()
                 .createNativeQuery(
                         "SELECT c.ID n, cl.NAME, cl.DESCRIPTION desc FROM CLUBS c " +
@@ -38,8 +39,12 @@ public class ClubRepo extends BaseRepository {
         }
     }
 
-    //TODO implement this method
-    public List<Club> findAll() {
-        return new ArrayList<>();
+    @SuppressWarnings("unchecked")
+    public List<Club> findAll(String langCode) {
+        return getEntityManager().createNativeQuery(
+                "SELECT * FROM CLUBS c INNER JOIN CLUB_LOCALS cl ON c.ID=cl.REF_CLUB_ID AND cl.LANG_CODE=:langCode",
+                    Club.class)
+                .setParameter("langCode", langCode)
+                .getResultList();
     }
 }

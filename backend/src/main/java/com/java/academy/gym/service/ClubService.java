@@ -8,11 +8,11 @@ import java.util.Optional;
 
 public interface ClubService {
 
-    List<Club> findAllClubs();
+    List<Club> findAllClubs(String langCode);
 
-    List<Club> findClubsByCity(String city);
+    List<Club> findClubsByCity(String city, String langCode);
 
     Optional<Club> findClubByName(Long id, String langCode);
 
-    ContactInfo getInfoAboutClubByClubName(String name);
+    ContactInfo getInfoAboutClubByClubId(Long id);
 }

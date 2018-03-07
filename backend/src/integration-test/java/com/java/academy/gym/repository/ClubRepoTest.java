@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
@@ -27,5 +28,13 @@ public class ClubRepoTest extends BaseITest {
         assertTrue(clubOptional.isPresent());
         assertEquals(description, clubOptional.get().getClubLocal().getDescription());
         assertEquals(name, clubOptional.get().getClubLocal().getName());
+    }
+
+    @Test
+    public void testGetAll() {
+        String langCode = "EN";
+        List<Club> club = clubRepo.findAll(langCode);
+        assertTrue(!club.isEmpty());
+        assertEquals(1, club);
     }
 }

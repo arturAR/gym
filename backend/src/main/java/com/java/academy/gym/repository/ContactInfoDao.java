@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ContactInfoDao extends JpaRepository<ContactInfo, Long> {
 
-    ContactInfo getContactInfoByClubName(String clubName);
+    ContactInfo getContactInfoByClubId(Long id);
 }

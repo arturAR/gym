@@ -15,23 +15,23 @@ import java.util.stream.Collectors;
 @Service
 public class ClubServiceImpl implements ClubService {
 
-    private final ClubRepo clubDao;
+    private final ClubRepo clubRepo;
     private final ContactInfoDao contactInfoDao;
 
     @Autowired
-    public ClubServiceImpl(ClubRepo clubDao, ContactInfoDao contactInfoDao) {
-        this.clubDao = clubDao;
+    public ClubServiceImpl(ClubRepo clubRepo, ContactInfoDao contactInfoDao) {
+        this.clubRepo = clubRepo;
         this.contactInfoDao = contactInfoDao;
     }
 
     @Override
-    public List<Club> findAllClubs() {
-        return clubDao.findAll();
+    public List<Club> findAllClubs(String locale) {
+        return clubRepo.findAll(locale);
     }
 
     @Override
-    public List<Club> findClubsByCity(String city) {
-        return clubDao.findAll()
+    public List<Club> findClubsByCity(String city, String locale) {
+        return clubRepo.findAll(locale)
                 .stream()
                 .filter(club -> club.getContactInfo().getCity().equals(city))
                 .collect(Collectors.toList());
@@ -39,11 +39,10 @@ public class ClubServiceImpl implements ClubService {
 
     @Override
     public Optional<Club> findClubByName(Long id, String langCode) {
-        return clubDao.findClubByNameAndLangCode(id, langCode);
+        return clubRepo.findClubByNameAndLangCode(id, langCode);
     }
 
-    @Override
-    public ContactInfo getInfoAboutClubByClubName(String name) {
-        return contactInfoDao.getContactInfoByClubName(name);
+    public ContactInfo getInfoAboutClubByClubId(Long id) {
+        return contactInfoDao.getContactInfoByClubId(id);
     }
 }

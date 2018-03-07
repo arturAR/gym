@@ -26,12 +26,12 @@ public class ClubsController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Club>> getClubs() {
-        return ResponseEntity.ok(clubService.findAllClubs());
+    public ResponseEntity<List<Club>> getClubs(HttpServletRequest request) {
+        return ResponseEntity.ok(clubService.findAllClubs(request.getLocale().getLanguage().toUpperCase()));
     }
 
     @GetMapping("/{clubName}")
-    public ResponseEntity<Optional<Club>> getClub(@PathVariable(value = "clubName") String clubName, HttpServletRequest request) {
-        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubName), request.getLocale().getLanguage().toUpperCase()));
+    public ResponseEntity<Club> getClub(@PathVariable(value = "clubName") String clubName, HttpServletRequest request) {
+        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubName), request.getLocale().getLanguage().toUpperCase()).get());
     }
 }
