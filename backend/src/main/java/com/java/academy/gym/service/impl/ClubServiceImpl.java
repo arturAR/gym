@@ -42,6 +42,7 @@ public class ClubServiceImpl implements ClubService {
         return clubRepo.findClubByNameAndLangCode(id, langCode);
     }
 
+    @Override
     public ContactInfo getInfoAboutClubByClubId(Long id) {
         return contactInfoDao.getContactInfoByClubId(id);
     }
