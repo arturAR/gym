@@ -7,11 +7,13 @@
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
   <changeSet id="1" author="Artur Rosa">
+
     <comment>Cracow Bora Komorowskiego</comment>
     <insert tableName="CONTACT_INFOS">
       <column name="ADDRESS">Bora Komorowskiego 25C</column>
       <column name="PHONE_NUMBER">12 396 61 11</column>
       <column name="CITY">Cracow</column>
+      <column name="EMAIL">EMAIL</column>
     </insert>
     <insert tableName="CLUBS">
       <column name="ID">1</column>
@@ -36,6 +38,7 @@
       <column name="ADDRESS">Rynek Główny 13</column>
       <column name="PHONE_NUMBER">12 396 61 11</column>
       <column name="CITY">Cracow</column>
+      <column name="EMAIL">EMAIL</column>
     </insert>
     <insert tableName="CLUBS">
       <column name="ID">2</column>
@@ -60,6 +63,7 @@
       <column name="ADDRESS">Opolska 114</column>
       <column name="PHONE_NUMBER">12 396 61 11</column>
       <column name="CITY">Cracow</column>
+      <column name="EMAIL">EMAIL</column>
     </insert>
     <insert tableName="CLUBS">
       <column name="ID">3</column>

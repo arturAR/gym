@@ -13,7 +13,7 @@ public interface ClubService {
     List<Club> findClubsByCity(String city, String langCode);
 
     Optional<Club> findClubByName(Long id, String langCode);
-    
+
     ContactInfo getInfoAboutClubByClubId(Long id);
 
 }

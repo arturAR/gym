@@ -12,9 +12,10 @@ export default class Content extends React.Component {
                     CLUBS:
                 </p>
 
+                <div className="clubs-container">
 
+                </div>
             </div>
-
         );
     }
 };

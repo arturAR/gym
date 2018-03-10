@@ -20,6 +20,8 @@ public class ContactInfo extends BaseEntity {
     private String phone;
     @Column(name = "CITY", nullable = false, length = 100)
     private String city;
+    @Column(name = "EMAIL", nullable = false, length = 100)
+    private String email;
 
     public ContactInfo() {}
 
@@ -60,5 +62,13 @@ public class ContactInfo extends BaseEntity {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
