@@ -145,6 +145,7 @@ frontend/out/
 backend/build/
 backend/out/
 
+node_modules/
 
 #WEB-APP
 client-web/webapp/node_modules/

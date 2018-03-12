@@ -50,6 +50,7 @@ dependencies {
     compile project(":backend")
     compile libs.spring_boot_web
     compile libs.liquibase
+    compile 'javax.xml.bind:jaxb-api:2.3.0'
 
     testCompile libs.test
 }

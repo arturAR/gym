@@ -6,8 +6,12 @@
   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
-
-  <include file="patches/patch-0-locales.xml" relativeToChangelogFile="true"/>
-  <include file="patches/patch-1-locales.xml" relativeToChangelogFile="true"/>
-  <include file="patches/patch-0-user-profiles.xml" relativeToChangelogFile="true"/>
+  <changeSet id="1" author="mprtcz">
+    <comment>Users</comment>
+    <insert tableName="USER_PROFILES">
+      <column name="VERSION">0</column>
+      <column name="FIRST_NAME">Tony</column>
+      <column name="SECOND_NAME">Stark</column>
+    </insert>
+  </changeSet>
 </databaseChangeLog>
