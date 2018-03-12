@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import {
     requestDefaultLanguage,
@@ -39,11 +40,13 @@ class App extends React.Component {
         }
 
         return (
-            <div className="App">
-                <Navbar i18n={this.props.i18n} changeLocalHandler={this.changeLocalHandler}/>
-                <ContentRouter i18n={this.props.i18n} locales={this.props.locales}/>
-                <Footer/>
-            </div>
+            <MuiThemeProvider>
+                <div className="App">
+                    <Navbar i18n={this.props.i18n} changeLocalHandler={this.changeLocalHandler}/>
+                    <ContentRouter i18n={this.props.i18n} locales={this.props.locales}/>
+                    <Footer/>
+                </div>
+            </MuiThemeProvider>
         );
     }
 }

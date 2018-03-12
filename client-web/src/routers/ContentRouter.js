@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Clubs from '../components/clubs/Clubs';
 import Content from "../components/main/Content";
+import Login from "../components/login/Login";
 
 export default class ContentRouter extends React.Component {
     render() {
@@ -23,7 +24,7 @@ export default class ContentRouter extends React.Component {
                         (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
                     } />
                     <Route path="/login" exact={true} render={
-                        (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
+                        (props) => (<Login i18n={this.props.i18n} locales={this.props.locales}/> )
                     } />
                 </Switch>
             </Router>
