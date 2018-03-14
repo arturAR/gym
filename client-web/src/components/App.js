@@ -6,7 +6,7 @@ import {
     requestDefaultLanguage,
     requestLocales,
     requestI18N,
-} from './AppAction'
+} from './AppAction';
 
 import './App.css';
 import Navbar from './main/Navbar';

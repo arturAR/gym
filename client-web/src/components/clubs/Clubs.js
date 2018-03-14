@@ -1,12 +1,45 @@
 import React from 'react';
+import {withRouter} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 import './Clubs.css';
+import {
+    requestAllClubs,
+    requestClubDetails,
+} from './ClubsAction';
+
 const club_logo = require('./club-image.jpg');
 
-export default class Content extends React.Component {
+class Clubs extends React.Component {
+
+    componentDidMount = () => {
+        this.props.requestAllClubs();
+    }
 
     render() {
-        const {i18n, locales} = this.props;
+        const {i18n, locales, isFetchingAllClubs, clubs} = this.props;
+
+        if (isFetchingAllClubs) {
+            return (
+                <div className="content-container">
+                    <p className="App-intro">
+                        CLUBS:
+                    </p>
+                    <div>Loading clubs...</div>
+                </div>
+            )
+        }
+
+        const content = clubs.map((club) =>
+            <div className="club" key={club.id}>
+                <a href="/clubs/{club.id}"><img src={club_logo} /></a>
+                <div className="club-body-short">
+                    <h2>{club.clubLocal.name}</h2>
+                    {club.clubLocal.description}
+                    <p>{club.contactInfo.address}</p>
+                </div>
+            </div>
+        );
         return (
             <div className="content-container">
                 <p className="App-intro">
@@ -14,35 +47,38 @@ export default class Content extends React.Component {
                 </p>
 
                 <div className="clubs-container">
-                    <div className="club">
-                        <a href="/clubs/1"><img src={club_logo} alt="first club" /></a>
-                        <div className="club-body-short">
-                            <h2>CLUB NAME</h2>
-                            CLUB DESCRIPTION:
-                        </div>
-                    </div>
-                    <div className="club">
-                        <a href="/clubs/2"><img src={club_logo} alt="second club" /></a>
-                        <div className="club-body-short"></div>
-                    </div>
-                    <div className="club">
-                        <a href="/clubs/3"><img src={club_logo} alt="third club" /></a>
-                        <div className="club-body-short"></div>
-                    </div>
-                    <div className="club">
-                        <a href="/clubs/4"><img src={club_logo} alt="fourth club" /></a>
-                        <div className="club-body-short"></div>
-                    </div>
-                    <div className="club">
-                        <a href="/clubs/5"><img src={club_logo} alt="fifth club" /></a>
-                        <div className="club-body-short"></div>
-                    </div>
-                    <div className="club">
-                        <a href="/clubs/6"><img src={club_logo} alt="sixth club" /></a>
-                        <div className="club-body-short"></div>
-                    </div>
+                    {content}
                 </div>
             </div>
         );
     }
 };
+
+const mapClubsStateToProps = state => {
+    const {
+        isFetchingAllClubs,
+        isFetchingAllLogos,
+        isReceivedLogos,
+        isFetchingClub,
+        clubs,
+        logos,
+        club,
+    } = state.clubsReducer;
+
+    return {
+        isFetchingAllClubs,
+        isFetchingAllLogos,
+        isReceivedLogos,
+        isFetchingClub,
+        clubs,
+        logos,
+        club,
+    }
+};
+
+const mapClubsDispatchToProps = dispatch => ({
+    requestAllClubs: () => dispatch(requestAllClubs()),
+    requestClubDetails: (clubId) => dispatch(requestClubDetails(clubId)),
+});
+
+export default withRouter(connect(mapClubsStateToProps, mapClubsDispatchToProps)(Clubs));

@@ -17,7 +17,7 @@ export const CLUB_SPECIFIED_IMAGES_REQUEST = 'CLUB_SPECIFIED_IMAGES_REQUEST';
 export const CLUB_SPECIFIED_IMAGES_REQUEST_SUCCESS = 'CLUB_SPECIFIED_IMAGES_REQUEST_SUCCESS';
 export const CLUB_SPECIFIED_IMAGES_REQUEST_FAILED = 'CLUB_SPECIFIED_IMAGES_REQUEST';
 
-export const requestAllClubs = (langCode) => (dispatch, getState) => {
+export const requestAllClubs = () => (dispatch, getState) => {
     if(getState().clubsReducer.isFetchingAllClubs) {
         return;
     }
@@ -37,7 +37,7 @@ export const requestAllLogos = () => (dispatch, getState) => {
         (error) => dispatch({type: ALL_CLUB_LOGOS_REQUEST_FAILED, error: error}));
 };
 
-export const requestClubDetails = (langCode, clubId) => (dispatch, getState) => {
+export const requestClubDetails = (clubId) => (dispatch, getState) => {
     if(getState().clubsReducer.isFetchingClub) {
         return;
     }

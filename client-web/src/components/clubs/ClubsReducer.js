@@ -1,6 +1,6 @@
 import * as ACTION from './ClubsAction';
 
-export const clubReducer = (state = {
+export const clubsReducer = (state = {
                                 isFetchingAllClubs: false,
                                 isFetchingAllLogos: false,
                                 isReceivedLogos: false,
