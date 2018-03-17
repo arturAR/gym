@@ -2,16 +2,16 @@ package com.java.academy.gym.controller;
 
 import com.java.academy.gym.model.Club;
 import com.java.academy.gym.model.ContactInfo;
+import com.java.academy.gym.model.Locale;
 import com.java.academy.gym.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -25,13 +25,16 @@ public class ClubsController {
         this.clubService = clubService;
     }
 
-    @GetMapping("/all")
-    public ResponseEntity<List<Club>> getClubs(HttpServletRequest request) {
-        return ResponseEntity.ok(clubService.findAllClubs(request.getLocale().getLanguage().toUpperCase()));
+    @PostMapping("/all")
+    public ResponseEntity<List<Club>> getClubs(@RequestBody Map<String, String> langCodes) {
+        System.out.println("============");
+        System.out.println(langCodes.get("langCode"));
+        System.out.println("============");
+        return ResponseEntity.ok(clubService.findAllClubs(langCodes.get("langCode")));
     }
 
-    @GetMapping("/{clubName}")
-    public ResponseEntity<Club> getClub(@PathVariable(value = "clubName") String clubName, HttpServletRequest request) {
-        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubName), request.getLocale().getLanguage().toUpperCase()).get());
+    @PostMapping("/{clubName}")
+    public ResponseEntity<Club> getClub(@PathVariable(value = "clubName") String clubName, @RequestBody Locale locale) {
+        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubName), locale.getLanguageCode()).get());
     }
 }

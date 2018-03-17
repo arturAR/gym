@@ -6,6 +6,7 @@ import {
     requestDefaultLanguage,
     requestLocales,
     requestI18N,
+    setGlobalLangCode,
 } from './AppAction';
 
 import './App.css';
@@ -27,11 +28,12 @@ class App extends React.Component {
     }
 
     changeLocalHandler = (langCode) => {
+        this.props.setGlobalLangCode(langCode);
         this.props.requestI18N(langCode);
     };
 
     render() {
-        const {isFetchingDefaultLanguage, langCode, isFetchingLocales, locales} = this.props;
+        const {isFetchingDefaultLanguage, langCode, isFetchingLocales} = this.props;
         if (isFetchingDefaultLanguage || isFetchingLocales) {
             return (
                 <div>Loading...</div>
@@ -41,7 +43,7 @@ class App extends React.Component {
         return (
             <div className="App">
                 <Navbar i18n={this.props.i18n} changeLocalHandler={this.changeLocalHandler}/>
-                <ContentRouter i18n={this.props.i18n} locales={this.props.locales}/>
+                <ContentRouter i18n={this.props.i18n} langCode={langCode} locales={this.props.locales}/>
                 <Footer/>
             </div>
         );
@@ -74,6 +76,7 @@ const mapDispatchToProps = dispatch => ({
     requestDefaultLanguage: () => dispatch(requestDefaultLanguage()),
     requestLocales: () => dispatch(requestLocales()),
     requestI18N: (lang) => dispatch(requestI18N(lang)),
+    setGlobalLangCode: (lang) => dispatch(setGlobalLangCode(lang)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

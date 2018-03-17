@@ -23,6 +23,7 @@ public class InternationalizationController {
 
     @PostMapping
     public Map<String, String> internationalizeMessages(@RequestBody Map<String, String> userMessages) {
+        System.out.println(userMessages);
         return internationalizationService.internationalizeUserMessages(userMessages);
     }
 

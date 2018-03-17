@@ -13,6 +13,9 @@ export const APP_I18N_REQUEST = 'APP_I18N_REQUEST';
 export const APP_I18N_REQUEST_SUCCESS = 'APP_I18N_REQUEST_SUCCESS';
 export const APP_I18N_REQUEST_FAILED = 'APP_I18N_REQUEST_FAILED';
 
+export const SET_LANG_CODE = 'SET_LANG_CODE';
+export const NEW_LANG_CODE = 'NEW_LANG_CODE';
+
 export const requestDefaultLanguage = () => (dispatch, getState) => {
     if (getState().appReducer.isFetchingDefaultLanguage) {
         return;
@@ -50,4 +53,8 @@ export const requestI18N = (langCode) => (dispatch, getState) => {
         },
         (i18n) => dispatch({type: APP_I18N_REQUEST_SUCCESS, i18n}),
         (error) => dispatch({type: APP_I18N_REQUEST_FAILED, error: error}));
+};
+
+export const setGlobalLangCode = (langCode) => (dispatch, getState) => {
+    dispatch({type: SET_LANG_CODE, langCode});
 };
