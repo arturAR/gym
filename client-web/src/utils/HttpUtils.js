@@ -46,6 +46,13 @@ const HttpUtils = {
             .catch(errorCallback);
     },
 
+    sendData: (url, data, successCallback, errorCallback) => {
+        fetch(process.env.REACT_APP_BACKEND_HOST + url, {
+            method: HttpUtils.METHOD.POST,
+            body: data,
+        }).then(successCallback).catch(errorCallback);
+    },
+
 };
 
 export default HttpUtils;
