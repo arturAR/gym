@@ -6,7 +6,8 @@ export const appReducer = (state = {
                                locales: [],
                                isFetchingI18N: false,
                                isReceivedI18N: false,
-                               i18n: {}
+                               i18n: {},
+                               langCode: '',
                            },
                            action) => {
     switch (action.type) {
@@ -25,7 +26,7 @@ export const appReducer = (state = {
             return {
                 ...state,
                 isFetchingDefaultLanguage: false,
-                lang: 'EN'
+                langCode: 'EN',
             };
 
         case ACTION.APP_LOCALES_REQUEST:
@@ -63,6 +64,16 @@ export const appReducer = (state = {
                 isFetchingI18N: false
             };
 
+        case ACTION.SET_LANG_CODE:
+            return {
+                ...state,
+                langCode: action.langCode,
+            };
+        case ACTION.NEW_LANG_CODE:
+            return {
+                ...state,
+                langCode: action.langCode,
+            };
         default:
             return state;
     }

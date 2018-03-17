@@ -13,11 +13,11 @@ const club_logo = require('./club-image.jpg');
 class Clubs extends React.Component {
 
     componentDidMount = () => {
-        this.props.requestAllClubs();
+        this.props.requestAllClubs(this.props.langCode);
     }
 
     render() {
-        const {i18n, locales, isFetchingAllClubs, clubs} = this.props;
+        const {isFetchingAllClubs, clubs} = this.props;
 
         if (isFetchingAllClubs) {
             return (
@@ -32,7 +32,7 @@ class Clubs extends React.Component {
 
         const content = clubs.map((club) =>
             <div className="club" key={club.id}>
-                <a href="/clubs/{club.id}"><img src={club_logo} /></a>
+                <a href={'/clubs/' + club.id}><img src={club_logo} /></a>
                 <div className="club-body-short">
                     <h2>{club.clubLocal.name}</h2>
                     {club.clubLocal.description}
@@ -77,8 +77,8 @@ const mapClubsStateToProps = state => {
 };
 
 const mapClubsDispatchToProps = dispatch => ({
-    requestAllClubs: () => dispatch(requestAllClubs()),
-    requestClubDetails: (clubId) => dispatch(requestClubDetails(clubId)),
+    requestAllClubs: (lang) => dispatch(requestAllClubs(lang)),
+    requestClubDetails: (clubId, lang) => dispatch(requestClubDetails(clubId, lang)),
 });
 
 export default withRouter(connect(mapClubsStateToProps, mapClubsDispatchToProps)(Clubs));

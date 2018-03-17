@@ -17,12 +17,16 @@ export const CLUB_SPECIFIED_IMAGES_REQUEST = 'CLUB_SPECIFIED_IMAGES_REQUEST';
 export const CLUB_SPECIFIED_IMAGES_REQUEST_SUCCESS = 'CLUB_SPECIFIED_IMAGES_REQUEST_SUCCESS';
 export const CLUB_SPECIFIED_IMAGES_REQUEST_FAILED = 'CLUB_SPECIFIED_IMAGES_REQUEST';
 
-export const requestAllClubs = () => (dispatch, getState) => {
+export const requestAllClubs = (langCode) => (dispatch, getState) => {
     if(getState().clubsReducer.isFetchingAllClubs) {
         return;
     }
     dispatch({type: ALL_CLUBS_REQUEST});
-    return HttpUtils.getJSON(ExternalUrls.CLUBS_ALL, HttpUtils.METHOD.GET,
+    return HttpUtils.sendJSON(ExternalUrls.CLUBS_ALL, HttpUtils.METHOD.POST,
+        {
+            "lang": langCode,
+            "langCode": langCode,
+        },
         (clubs) => dispatch({type: ALL_CLUBS_REQUEST_SUCCESS, clubs}),
         (error) => dispatch({type: ALL_CLUBS_REQUEST_FAILED, error: error}));
 };
