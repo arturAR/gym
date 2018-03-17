@@ -15,7 +15,7 @@ export default class Api extends Component {
         for (let i = 0; i < input.files.length; i++)
             data.append('files', input.files[i]);
 
-        HttpUtils.sendData("fe/contents/fm/upload/-1", data,
+        HttpUtils.sendData("blob/upload", data,
             (response) => {
                 if (HttpUtils.isResponseSuccess(response)) {
                     console.log('success', response.status);

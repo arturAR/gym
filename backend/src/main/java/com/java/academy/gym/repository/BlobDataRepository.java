@@ -10,7 +10,7 @@ import org.springframework.data.repository.query.Param;
  */
 public interface BlobDataRepository extends JpaRepository<BlobData, Long> {
 
-    @Query("SELECT b.id, b.dateCreate, b.dateUpdate, b.name, b.size, b.contentType, b.version " +
+    @Query("SELECT b.id, b.name, b.size, b.contentType, b.version " +
             " FROM BlobData b WHERE b.id=:id")
     Object[][] findOneWithoutBlob(@Param("id") Long id);
 }
