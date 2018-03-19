@@ -33,8 +33,8 @@ public class ClubsController {
         return ResponseEntity.ok(clubService.findAllClubs(langCodes.get("langCode")));
     }
 
-    @PostMapping("/{clubName}")
-    public ResponseEntity<Club> getClub(@PathVariable(value = "clubName") String clubName, @RequestBody Locale locale) {
-        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubName), locale.getLanguageCode()).get());
+    @PostMapping("/{clubId}")
+    public ResponseEntity<Club> getClub(@PathVariable(value = "clubId") String clubId, @RequestBody Map<String, String> langCodes) {
+        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubId), langCodes.get("langCode")).get());
     }
 }

@@ -7,8 +7,12 @@ import Content from "../components/main/Content";
 import { Whoops404 } from '../components/error/Whoops404';
 
 export default class ContentRouter extends React.Component {
+
+    getClubDetailsHandler = (clubId, langCode) => {
+        this.props.requestClubDetails(clubId, langCode);
+    }
+
     render() {
-        const {i18n, locales} = this.props;
         return (
             <Router>
                 <Switch>
@@ -28,7 +32,7 @@ export default class ContentRouter extends React.Component {
                         (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
                     } />
                     <Route path="/clubs/:clubId" exact={true} render={
-                        (props) => (<Club /> )
+                        (props) => (<Club getClubDetailsHandler={this.getClubDetailsHandler} /> )
                     } />
                     <Route component={Whoops404}/>
                 </Switch>

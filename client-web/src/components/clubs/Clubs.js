@@ -16,6 +16,10 @@ class Clubs extends React.Component {
         this.props.requestAllClubs(this.props.langCode);
     }
 
+    getClubDetailsHandler = (clubId, langCode) => {
+        this.props.requestClubDetails(clubId, langCode);
+    }
+
     render() {
         const {isFetchingAllClubs, clubs} = this.props;
 

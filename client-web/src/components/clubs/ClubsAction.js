@@ -21,6 +21,7 @@ export const requestAllClubs = (langCode) => (dispatch, getState) => {
     if(getState().clubsReducer.isFetchingAllClubs) {
         return;
     }
+    langCode = langCode ? langCode : 'EN';
     dispatch({type: ALL_CLUBS_REQUEST});
     return HttpUtils.sendJSON(ExternalUrls.CLUBS_ALL, HttpUtils.METHOD.POST,
         {
@@ -41,12 +42,16 @@ export const requestAllLogos = () => (dispatch, getState) => {
         (error) => dispatch({type: ALL_CLUB_LOGOS_REQUEST_FAILED, error: error}));
 };
 
-export const requestClubDetails = (clubId) => (dispatch, getState) => {
+export const requestClubDetails = (clubId, langCode) => (dispatch, getState) => {
     if(getState().clubsReducer.isFetchingClub) {
         return;
     }
     dispatch({type: CLUB_SPECIFIED_REQUEST});
-    return HttpUtils.getJSON(ExternalUrls.CLUB + '/' + clubId, HttpUtils.METHOD.GET,
+    return HttpUtils.getJSON(ExternalUrls.CLUB + '/' + clubId, HttpUtils.METHOD.POST,
+        {
+            "lang": langCode,
+            "langCode": langCode,
+        },
         (club) => dispatch({type: CLUB_SPECIFIED_REQUEST_SUCCESS, club}),
         (error) => dispatch({type: CLUB_SPECIFIED_REQUEST_FAILED, error: error}));
 };
