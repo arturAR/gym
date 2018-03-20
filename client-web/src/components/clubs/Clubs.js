@@ -1,6 +1,7 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
+import {Link} from 'react-router-dom';
 
 import './Clubs.css';
 import {
@@ -36,7 +37,7 @@ class Clubs extends React.Component {
 
         const content = clubs.map((club) =>
             <div className="club" key={club.id}>
-                <a href={'/clubs/' + club.id}><img src={club_logo} /></a>
+                <Link to={'/clubs/'+ club.id}><img src={club_logo} /></Link>
                 <div className="club-body-short">
                     <h2>{club.clubLocal.name}</h2>
                     {club.clubLocal.description}
