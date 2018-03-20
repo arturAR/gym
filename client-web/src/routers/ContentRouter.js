@@ -14,7 +14,6 @@ export default class ContentRouter extends React.Component {
 
     render() {
         return (
-            <Router>
                 <Switch>
                     <Route path="/" exact={true} render={
                         (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
@@ -36,7 +35,6 @@ export default class ContentRouter extends React.Component {
                     } />
                     <Route component={Whoops404}/>
                 </Switch>
-            </Router>
         );
     }
 }
