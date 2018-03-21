@@ -1,9 +1,12 @@
 import * as React from 'react';
 
-export const Club = () => {
-    return(
-        <div className="club">
-            CLUB PAGE
-        </div>
-    );
+export default class Content extends React.Component {
+
+    render() {
+        return(
+            <div className="club">
+                CLUB PAGE
+            </div>
+        );
+    };
 }

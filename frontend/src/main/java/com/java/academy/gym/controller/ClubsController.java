@@ -1,18 +1,12 @@
 package com.java.academy.gym.controller;
 
 import com.java.academy.gym.model.Club;
-import com.java.academy.gym.model.ContactInfo;
-import com.java.academy.gym.model.Locale;
 import com.java.academy.gym.service.ClubService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/clubs")
@@ -25,16 +19,16 @@ public class ClubsController {
         this.clubService = clubService;
     }
 
-    @PostMapping("/all")
-    public ResponseEntity<List<Club>> getClubs(@RequestBody Map<String, String> langCodes) {
+    @GetMapping("/all")
+    public ResponseEntity<List<Club>> getClubs(@RequestParam("langCode") String langCode) {
         System.out.println("============");
-        System.out.println(langCodes.get("langCode"));
+        System.out.println(langCode);
         System.out.println("============");
-        return ResponseEntity.ok(clubService.findAllClubs(langCodes.get("langCode")));
+        return ResponseEntity.ok(clubService.findAllClubs(langCode));
     }
 
-    @PostMapping("/{clubId}")
-    public ResponseEntity<Club> getClub(@PathVariable(value = "clubId") String clubId, @RequestBody Map<String, String> langCodes) {
-        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubId), langCodes.get("langCode")).get());
+    @GetMapping("/{clubId}")
+    public ResponseEntity<Club> getClub(@PathVariable(value = "clubId") String clubId, @RequestParam("langCode") String langCode) {
+        return ResponseEntity.ok(clubService.findClubByName(Long.valueOf(clubId), langCode).get());
     }
 }
