@@ -31,7 +31,7 @@ export default class ContentRouter extends React.Component {
                     (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
                 } />
                 <Route path="/clubs/:clubId" exact={true} render={
-                    (props) => (<Club getClubDetailsHandler={this.getClubDetailsHandler} /> )
+                    (props) => (<Clubs langCode={this.props.langCode}/> )
                 } />
                 <Route component={Whoops404}/>
             </Switch>

@@ -45,7 +45,7 @@ export const requestClubDetails = (clubId, langCode) => (dispatch, getState) => 
     }
     dispatch({type: CLUB_SPECIFIED_REQUEST});
     return HttpUtils.getJSON(ExternalUrls.CLUB + '/' + clubId + '?langCode=' + langCode,
-        HttpUtils.METHOD.POST,
+        HttpUtils.METHOD.GET,
         (club) => dispatch({type: CLUB_SPECIFIED_REQUEST_SUCCESS, club}),
         (error) => dispatch({type: CLUB_SPECIFIED_REQUEST_FAILED, error: error}));
 };
