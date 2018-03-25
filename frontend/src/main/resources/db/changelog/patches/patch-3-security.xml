@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+  <changeSet id="1" author="Artur Rosa">
+    <comment>Admin User</comment>
+    <insert tableName="APP_ROLE">
+      <column name="ID">1</column>
+      <column name="ROLE_NAME">ADMIN_USER</column>
+      <column name="DESCRIPTION">Admin User - Has permission to perform any tasks</column>
+    </insert>
+    <comment>Password encrypted: 'password'</comment>
+    <insert tableName="APP_USER">
+      <column name="ID">1</column>
+      <column name="USERNAME">Admin</column>
+      <column name="FIRST_NAME">Admin</column>
+      <column name="LAST_NAME">Admin</column>
+      <column name="PASSWORD">5f4dcc3b5aa765d61d8327deb882cf99</column>
+    </insert>
+    <insert tableName="USER_ROLE">
+      <column name="USER_ID">1</column>
+      <column name="ROLE_ID">1</column>
+    </insert>
+
+
+    <comment>Employee User</comment>
+    <insert tableName="APP_ROLE">
+      <column name="ID">2</column>
+      <column name="ROLE_NAME">EMPLOYEE</column>
+      <column name="DESCRIPTION">Employee - Has permission to add activities</column>
+    </insert>
+    <comment>Password encrypted: 'employee'</comment>
+    <insert tableName="APP_USER">
+      <column name="ID">2</column>
+      <column name="USERNAME">Employee</column>
+      <column name="FIRST_NAME">Employee</column>
+      <column name="LAST_NAME">Employee</column>
+      <column name="PASSWORD">fa5473530e4d1a5a1e1eb53d2fedb10c</column>
+    </insert>
+    <insert tableName="USER_ROLE">
+      <column name="USER_ID">2</column>
+      <column name="ROLE_ID">2</column>
+    </insert>
+
+
+    <comment>Client User</comment>
+    <insert tableName="APP_ROLE">
+      <column name="ID">3</column>
+      <column name="ROLE_NAME">CLIENT</column>
+      <column name="DESCRIPTION">Client - Has permission to register for classes</column>
+    </insert>
+    <comment>Password encrypted: 'client1'</comment>
+    <insert tableName="APP_USER">
+      <column name="ID">3</column>
+      <column name="USERNAME">ArturAR</column>
+      <column name="FIRST_NAME">Artur</column>
+      <column name="LAST_NAME">Rrrr</column>
+      <column name="PASSWORD">a165dd3c2e98d5d607181d0b87a4c66b</column>
+    </insert>
+    <insert tableName="USER_ROLE">
+      <column name="USER_ID">3</column>
+      <column name="ROLE_ID">3</column>
+    </insert>
+  </changeSet>
+
+</databaseChangeLog>

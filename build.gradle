@@ -6,6 +6,8 @@ subprojects {
                 junit              : '4.12',
                 jstl               : '1.2',
                 spring_boot        : '1.5.8.RELEASE',
+                auth2              : '2.1.0.RELEASE',
+                jwt                : '1.0.7.RELEASE',
                 hibernate_validator: '5.3.3.Final',
                 hibernate_ehcache  : '5.0.11.Final',
                 mysql              : '5.1.43',
@@ -26,6 +28,10 @@ subprojects {
                                 "org.hibernate:hibernate-ehcache:${versions.hibernate_ehcache}"]
 
         libs.spring_boot_security = "org.springframework.boot:spring-boot-starter-security:${versions.spring_boot}"
+
+        libs.spring_security_oauth2 = "org.springframework.security.oauth:spring-security-oauth2:${versions.auth2}"
+
+        libs.spring_security_jwt = "org.springframework.security:spring-security-jwt:${versions.jwt}"
 
         libs.spring_boot_mail = "org.springframework.boot:spring-boot-starter-mail:${versions.spring_boot}"
 

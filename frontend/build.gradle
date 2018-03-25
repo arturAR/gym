@@ -50,6 +50,8 @@ dependencies {
     compile project(":backend")
     compile libs.spring_boot_web
     compile libs.liquibase
+    compile libs.spring_security_oauth2
+    compile libs.spring_security_jwt
 
     testCompile libs.test
 }
