@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="0" author="Volodymyr Dotsenko">
+        <comment>Create the persistent_logins table</comment>
+
+        <sql>
+            create table persistent_logins (username varchar(64) not null, series varchar(64) primary key,
+            token
+            varchar(64) not null, last_used timestamp not null)
+        </sql>
+    </changeSet>
+
+    <changeSet id="1" author="Volodymyr Dotsenko">
+        <comment>Users and roles</comment>
+        <!-- User admin with password gym_admin-->
+        <insert tableName="USR_USERS">
+            <column name="ID">-1</column>
+            <column name="VERSION">0</column>
+            <column name="USER_NAME">admin</column>
+            <column name="EMAIL">admin@gym.com</column>
+            <column name="PASSWORD">$2a$10$WPmiILZKEfWPz.pdR3Dr1ukjqdOnLgW63aOzRwfqs1n.7SXrwgkCO</column>
+            <column name="EXPIRED" valueDate="9999-12-31 00:00:00"/>
+            <column name="LOCKED" valueBoolean="false"/>
+            <column name="LAST_VISIT">NULL</column>
+        </insert>
+
+        <insert tableName="USR_ROLES">
+            <column name="ID">-1</column>
+            <column name="VERSION">0</column>
+            <column name="NAME">ROLE_ADMIN</column>
+            <column name="DESCRIPTION">The role for the administrators</column>
+        </insert>
+
+        <insert tableName="USR_USERS_ROLES">
+            <column name="REF_USER_ID">-1</column>
+            <column name="REF_ROLE_ID">-1</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -53,6 +53,39 @@ const HttpUtils = {
         }).then(successCallback).catch(errorCallback);
     },
 
+    isAuthenticated: (url, successCallback, errorCallback) => {
+        fetch(process.env.REACT_APP_BACKEND_HOST + url, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            credentials: 'include',
+            method: 'POST',
+        }).then(successCallback).catch(errorCallback)
+    },
+
+    postWithAuthorization: (url, email, password, successCallback, errorCallback) => {
+        fetch(process.env.REACT_APP_BACKEND_HOST + url, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Authorization': 'Basic ' + btoa(unescape(encodeURIComponent((email + ':' + password)))),
+            },
+            credentials: 'include',
+            method: 'POST',
+        })
+            .then(successCallback)
+            .catch(errorCallback)
+    },
+
+    postWithCredentials: (url, successCallback, errorCallback) => {
+        fetch(process.env.REACT_APP_BACKEND_HOST + url, {
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            credentials: 'include',
+            method: 'POST',
+        }).then(successCallback).catch(errorCallback)
+    },
+
 };
 
 export default HttpUtils;
