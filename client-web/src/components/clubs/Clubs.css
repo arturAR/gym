@@ -3,6 +3,7 @@
   color: black;
   padding: 10px;
   text-align: center;
+  height: 1000px;
 }
 
 .App-intro {
@@ -10,6 +11,24 @@
   background-color: #940429;
   padding: 15px 0px;
   color: white;
-  margin: 0px 50px;
+  margin: 0px 40px;
 }
 
+.clubs-container {
+  padding: 20px 0 0 40px;
+  width: 1200px;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.club {
+  margin: 20px;
+  max-width: 33.333333%;
+  position: relative;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.club-body-short {
+  height: 150px;
+}

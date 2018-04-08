@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './Navbar.css';
 import I18n from "./I18n";
+import {Link} from 'react-router-dom';
 
 const logo = require('./../logo.svg');
 
@@ -11,11 +12,11 @@ export default class Navbar extends React.Component {
         return (
             <div className="navbar-container">
                 <img src={logo} className="App-logo" alt="logo"/>
-                <a className="menu" href="/">{i18n['nav.i18n.about']}</a>
-                <a className="menu" href="/clubs">{i18n['nav.i18n.clubs']}</a>
-                <a className="menu" href="/events">{i18n['nav.i18n.events']}</a>
-                <a className="menu" href="/contact">{i18n['nav.i18n.contact']}</a>
-                <a className="menu" href="/login">{i18n['nav.i18n.login']}</a>
+                <Link to="/" className="menu">{i18n['nav.i18n.about']}</Link>
+                <Link to="/clubs" className="menu">{i18n['nav.i18n.clubs']}</Link>
+                <Link to="/events" className="menu">{i18n['nav.i18n.events']}</Link>
+                <Link to="/contact" className="menu">{i18n['nav.i18n.contact']}</Link>
+                <Link to="/login" className="menu">{i18n['nav.i18n.login']}</Link>
 
                 <I18n changeLocalHandler={this.props.changeLocalHandler}/>
             </div>
