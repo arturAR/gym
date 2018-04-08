@@ -13,7 +13,6 @@ const AppRouter = () => (
         <div style={{height: '100%'}}>
             <Switch>
                 <Route path="/api" component={Api} />
-                <Route path="/auth" component={Auth}/>
                 <PrivateRoute path={"/cms"} component={Dashboard}/>
                 <Route path="/" component={App} />
                 <Route component={Whoops404}/>

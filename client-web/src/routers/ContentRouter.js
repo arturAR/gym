@@ -3,8 +3,8 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import Clubs from '../components/clubs/Clubs';
 import Club from '../components/clubs/Club';
+import Auth from '../modules/auth/Auth';
 import Content from "../components/main/Content";
-import Login from "../components/login/Login";
 import { Whoops404 } from '../components/error/Whoops404';
 
 export default class ContentRouter extends React.Component {
@@ -29,7 +29,7 @@ export default class ContentRouter extends React.Component {
                     (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
                 } />
                 <Route path="/login" exact={true} render={
-                    (props) => (<Login i18n={this.props.i18n} locales={this.props.locales}/> )
+                    (props) => (<Auth i18n={this.props.i18n} locales={this.props.locales}/> )
                 } />
                 <Route path="/clubs/:clubId" exact={true} render={
                     (props) => (<Clubs langCode={this.props.langCode}/> )

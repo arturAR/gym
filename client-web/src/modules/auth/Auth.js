@@ -1,8 +1,38 @@
 import React, {Component} from 'react';
 import {withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
+import Button from 'material-ui/Button';
+import Card from 'material-ui/Card';
+import TextField from 'material-ui/TextField';
 
 import {requestCheckAccess, requestAccess} from './AuthAction'
+
+const margin = {margin: '10px'};
+
+const primaryButton = {
+    margin: '10px',
+    backgroundColor: 'black',
+    color: 'white',
+    fontWeight: '700',
+};
+
+const secondaryButton = {
+    margin: '10px',
+    backgroundColor: 'white',
+    color: 'black',
+    fontWeight: '700',
+};
+
+const cardStyle = {
+    maxWidth: '300px',
+    margin: '25px',
+    paddingTop: '15px',
+    paddingBottom: '15px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+    marginTop: '25px',
+    textAlign: 'center',
+};
 
 class Auth extends Component {
 
@@ -52,24 +82,22 @@ class Auth extends Component {
                     }}/>);
             }
         } else {
-            if (!this.props.match || this.props.match.isExact) {
-                return (<Redirect to={{
-                    pathname: "/auth/login",
-                }}/>);
-            }
+            // Stay on this page
         }
 
         return (
+            <div className="content-container">
             <div>
                 {isLogonFailed ? <div style={{fontSize: 'small', color: 'red'}}>Logon failed</div> : <div></div>}
-
-                <form onSubmit={this._login}>
-                    <input type="text" name="email" placeholder="email or username"/>
-                    <br/>
-                    <input type="password" name="pass" placeholder="password"/>
-                    <br/>
-                    <input type="submit" value="Login"/>
-                </form>
+                    <form onSubmit={this._login}>
+                        <Card style={cardStyle}>
+                            <TextField placeholder={"Login"} type="text" name="email" style={margin}/><br/>
+                            <TextField placeholder={"Password"} type="password" name="pass" style={margin}/><br/>
+                            <Button variant="raised" style={primaryButton} type="submit" value="Login" >Send</Button>
+                            <Button variant="raised" style={secondaryButton}>Cancel</Button>
+                        </Card>
+                    </form>
+                </div>
             </div>
         )
     }
