@@ -2,9 +2,16 @@ import React, {Component} from 'react';
 import {withRouter, Redirect} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {requestCheckAccess, requestAccess} from './AuthAction'
+import {requestCheckAccess, requestAccess, keepPathFrom} from './AuthAction'
 
 class Auth extends Component {
+
+    componentWillMount() {
+        if (!this.props.isAuthenticated) {
+            if (this.props.location.pathname !== "/auth/login")
+                this.props.keepPathFrom(this.props.location.pathname);
+        }
+    }
 
     componentDidMount() {
         if (!!this.props.requestCheckAccess)
@@ -40,6 +47,7 @@ class Auth extends Component {
         }
 
         if (isAuthenticated) {
+            console.log(this.props);
             if (this.props.component) {
                 return (React.createElement(this.props.component, this.props));
             } else {
@@ -81,19 +89,22 @@ const mapStateToProps = state => {
         isFetchingCheckingAccess,
         isFetchingAccess,
         isLogonFailed,
+        pathFrom,
     } = state.authReducer;
 
     return {
         isAuthenticated,
         isFetchingCheckingAccess,
         isFetchingAccess,
-        isLogonFailed
+        isLogonFailed,
+        pathFrom
     }
 };
 
 const mapDispatchToProps = dispatch => ({
     requestCheckAccess: () => dispatch(requestCheckAccess()),
     requestAccess: (email, pass) => dispatch(requestAccess(email, pass)),
+    keepPathFrom: (path) => dispatch(keepPathFrom(path)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Auth));

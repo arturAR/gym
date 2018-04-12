@@ -14,6 +14,8 @@ export const AUTH_REQUEST_SIGN_OUT = 'AUTH_REQUEST_SIGN_OUT';
 export const AUTH_REQUEST_SIGN_OUT_SUCCESS = 'AUTH_REQUEST_SIGN_OUT_SUCCESS';
 export const AUTH_REQUEST_SIGN_OUT_FAILED = 'AUTH_REQUEST_SIGN_OUT_FAILED';
 
+export const KEEP_PATH_FROM = 'AUTH_KEEP_PATH_FROM';
+
 export const requestCheckAccess = () => (dispatch, getState) => {
     if (getState().authReducer.isFetchingCheckingAccess) {
         return;
@@ -66,4 +68,8 @@ export const signOut = () => (dispatch, getState) => {
         },
         (error) => dispatch({type: AUTH_REQUEST_SIGN_OUT_FAILED})
     );
+};
+
+export const keepPathFrom = (pathFrom) => (dispatch) => {
+    return dispatch({type: KEEP_PATH_FROM, pathFrom});
 };

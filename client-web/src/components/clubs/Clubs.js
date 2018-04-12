@@ -83,6 +83,7 @@ const mapClubsStateToProps = state => {
         logos,
         club,
     } = state.clubsReducer;
+    const { langCode } = state.appReducer;
 
     return {
         isFetchingAllClubs,
@@ -92,6 +93,7 @@ const mapClubsStateToProps = state => {
         clubs,
         logos,
         club,
+        langCode,
     }
 };
 

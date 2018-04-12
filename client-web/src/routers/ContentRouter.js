@@ -5,6 +5,8 @@ import Clubs from '../components/clubs/Clubs';
 import Club from '../components/clubs/Club';
 import Content from "../components/main/Content";
 import { Whoops404 } from '../components/error/Whoops404';
+import PrivateRoute from "../modules/auth/PrivateRoute";
+
 
 export default class ContentRouter extends React.Component {
 
@@ -18,9 +20,7 @@ export default class ContentRouter extends React.Component {
                 <Route path="/" exact={true} render={
                     (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
                 } />
-                <Route path="/clubs" exact={true} render={
-                    (props) => (<Clubs langCode={this.props.langCode} /> )
-                } />
+                <PrivateRoute path={"/clubs"}  component={Clubs} />
                 <Route path="/events" exact={true} render={
                     (props) => (<Content i18n={this.props.i18n} locales={this.props.locales}/> )
                 } />

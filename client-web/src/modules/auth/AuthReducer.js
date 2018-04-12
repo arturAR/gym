@@ -57,6 +57,11 @@ export const authReducer = (state = {
                 ...state,
                 isAuthenticated: false,
             };
+        case ACTION.KEEP_PATH_FROM:
+            return {
+                ...state,
+                pathFrom: action.pathFrom
+            };
         default:
             return state;
     }
